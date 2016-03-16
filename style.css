@@ -1,6 +1,11 @@
 .jumbotron {
-	height:500px;
+	height:400px;
 	margin-bottom: 0;
 	background-image: url(images/mapBG01.jpg);
 	background-size: cover;
+}
+
+a {
+	color: #666;
+	font-weight:500;
 }
