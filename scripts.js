@@ -1,17 +1,3 @@
-// $(document).ready(function(){
-// 	var query=$('#search').val().trim();
-// 	var geocodeQueryURL = 'https://maps.googleapis.com/maps/api/geocode/json?address=' + query + '&key=AIzaSyAzBECPmc6z_ppq-pud2BgfA6bmZOnC25s'
-
-// 	$.ajax({url: geocodeQueryURL, method: 'GET'})
-	 
-// 		.done(function(response) {
-
-// 	     console.log(response);
-
-	    
-// 	}); 
-
-// });
 
 // sample geocoder API URL : https://maps.googleapis.com/maps/api/geocode/json?address=London&key=AIzaSyAzBECPmc6z_ppq-pud2BgfA6bmZOnC25s
 
@@ -37,6 +23,8 @@ $(document).ready(function(){
 
 			var longitude = response.results[0].geometry.location.lng;
 			console.log('Longitude: ' + longitude);
+
+			//will need more AJAX calls to fill other APIs with this info.
 
 		}); 
 	}
