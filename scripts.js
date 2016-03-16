@@ -10,18 +10,20 @@ $(document).ready(function(){
 		$.ajax({url: geocodeQueryURL, method: 'GET'})
 			.done(function(response) {
 
+			var data = response.results[0];
 			// results[0] pulls the FIRST result from geocoder API.
+			
 	 		console.log(response);
-	 		var location = response.results[0].formatted_address;
+	 		var location = data.formatted_address;
 			console.log('Location Query: ' + location);
 
-			var place_id = response.results[0].place_id;
+			var place_id = data.place_id;
 			console.log('GooglePlace ID: ' + place_id);
 
-			var latitude = response.results[0].geometry.location.lat;
+			var latitude = data.geometry.location.lat;
 			console.log('Latitude: ' + latitude);
 
-			var longitude = response.results[0].geometry.location.lng;
+			var longitude = data.geometry.location.lng;
 			console.log('Longitude: ' + longitude);
 
 			//will need more AJAX calls to fill other APIs with this info.
