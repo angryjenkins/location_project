@@ -1,0 +1,6 @@
+.jumbotron {
+	height:500px;
+	margin-bottom: 0;
+	background-image: url(images/mapBG01.jpg);
+	background-size: cover;
+}

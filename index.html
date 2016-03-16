@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Location Looker Upper</title>
+	<!-- Latest compiled and minified CSS & JS -->
+	<link rel="stylesheet" href="https://bootswatch.com/cosmo/bootstrap.min.css">
+	
+
+	<link rel="stylesheet" href="style.css">
+
+	<script src="https://code.jquery.com/jquery.js"></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
+
+</head>
+<body>
+<div class="jumbotron">
+	<div class="container-fluid">
+		<nav class="navbar navbar-default" role="navigation">
+			<div class="container-fluid">
+				<!-- Brand and toggle get grouped for better mobile display -->
+				<div class="navbar-header">
+					<button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-ex1-collapse">
+						<span class="sr-only">Toggle navigation</span>
+						<span class="icon-bar"></span>
+						<span class="icon-bar"></span>
+						<span class="icon-bar"></span>
+					</button>
+					<a class="navbar-brand" href="#"><i class="glyphicon glyphicon-map-marker"></i>&nbsp;Location Looker Upper!</a>
+				</div>
+		
+				<!-- Collect the nav links, forms, and other content for toggling -->
+				<div class="collapse navbar-collapse navbar-ex1-collapse">
+					<ul class="nav navbar-nav">
+						<!-- <li class="active"><a href="#">Link</a></li>
+						<li><a href="#">Link</a></li> -->
+					</ul>
+					
+					<ul class="nav navbar-nav navbar-right">
+						<!-- <li><a href="#">Link</a></li>
+						<li class="dropdown">
+							<a href="#" class="dropdown-toggle" data-toggle="dropdown">Dropdown <b class="caret"></b></a>
+							<ul class="dropdown-menu">
+								<li><a href="#">Action</a></li>
+								<li><a href="#">Another action</a></li>
+								<li><a href="#">Something else here</a></li>
+								<li><a href="#">Separated link</a></li>
+							</ul>
+						</li> -->
+						<form class="navbar-form navbar-left" role="search">
+							<div class="form-group">
+								<input id="search" type="text" class="form-control" placeholder="Where to?" required>
+							</div>
+							<button type="submit" id="submit" class="btn btn-primary"><i class="glyphicon glyphicon-search"></i>&nbsp;Search</button>
+						</form>
+					</ul>
+				</div><!-- /.navbar-collapse -->
+			</div>
+		</nav>
+
+	</div>
+</div>
+<div class="container-fluid">
+	<div class="row">
+		<div class="col-md-12">
+			<div>
+			  	<ul class="nav nav-tabs nav-justified" role="tablist">
+				    <li role="presentation" class="active"><a href="#info" aria-controls="home" role="tab" data-toggle="tab">Info</a></li>
+				    <li role="presentation"><a href="#weather" aria-controls="weather" role="tab" data-toggle="tab">Weather</a></li>
+				    <li role="presentation"><a href="#news" aria-controls="news" role="tab" data-toggle="tab">News</a></li>
+				    <li role="presentation"><a href="#buzz" aria-controls="buzz" role="tab" data-toggle="tab">Buzz</a></li>
+			  	</ul>
+
+			  	<!-- Tab panes -->
+			  	
+			</div>
+			<div class="tab-content">
+		    	<div role="tabpanel" class="tab-pane fade in active" id="info">
+					<p>info</p>
+		    	</div>
+			    <div role="tabpanel" class="tab-pane fade" id="weather">
+			    	<p>weather</p>
+			    </div>
+			    <div role="tabpanel" class="tab-pane fade" id="news">
+			    	<p>news</p>
+			    </div>
+			    <div role="tabpanel" class="tab-pane fade" id="buzz">
+			    	<p>buzz</p>
+			    </div>
+			</div>
+		</div>
+	</div>
+</div>
+
+<script src="scripts.js"></script>
+</body>
+</html>
