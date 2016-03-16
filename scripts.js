@@ -1,52 +1,53 @@
-$(document).ready(function(){
-	var query=$('#search').val().trim();
-	var geocodeQueryURL = 'https://maps.googleapis.com/maps/api/geocode/json?address=' + query + '&key=AIzaSyAzBECPmc6z_ppq-pud2BgfA6bmZOnC25s'
+// $(document).ready(function(){
+// 	var query=$('#search').val().trim();
+// 	var geocodeQueryURL = 'https://maps.googleapis.com/maps/api/geocode/json?address=' + query + '&key=AIzaSyAzBECPmc6z_ppq-pud2BgfA6bmZOnC25s'
 
-	$.ajax({url: geocodeQueryURL, method: 'GET'})
+// 	$.ajax({url: geocodeQueryURL, method: 'GET'})
 	 
-		.done(function(response) {
+// 		.done(function(response) {
 
-	     console.log(response);
+// 	     console.log(response);
 
 	    
-	}); 
+// 	}); 
 
-});
+// });
 
 // sample geocoder API URL : https://maps.googleapis.com/maps/api/geocode/json?address=London&key=AIzaSyAzBECPmc6z_ppq-pud2BgfA6bmZOnC25s
 
-
-var geocoder = function (){
+//geocoder function with AJAX calls.
+$(document).ready(function(){
+	var geocoder = function (){
 	var query = $('#search').val().trim();
 	var geocodeQueryURL = 'https://maps.googleapis.com/maps/api/geocode/json?address=' + query + '&key=AIzaSyAzBECPmc6z_ppq-pud2BgfA6bmZOnC25s'
 
-	$.ajax({url: geocodeQueryURL, method: 'GET'})
-		.done(function(response) {
+		$.ajax({url: geocodeQueryURL, method: 'GET'})
+			.done(function(response) {
 
- 		console.log(response);
- 		var location = response.results[0].formatted_address;
-		console.log('Location Query: ' + location);
+			// results[0] pulls the FIRST result from geocoder API.
+	 		console.log(response);
+	 		var location = response.results[0].formatted_address;
+			console.log('Location Query: ' + location);
 
-		var place_id = response.results[0].place_id;
-		console.log('GooglePlace ID: ' + place_id);
+			var place_id = response.results[0].place_id;
+			console.log('GooglePlace ID: ' + place_id);
 
-		var latitude = response.results[0].geometry.location.lat;
-		console.log('Latitude: ' + latitude);
+			var latitude = response.results[0].geometry.location.lat;
+			console.log('Latitude: ' + latitude);
 
-		var longitude = response.results[0].geometry.location.lng;
-		console.log('Longitude: ' + longitude);
+			var longitude = response.results[0].geometry.location.lng;
+			console.log('Longitude: ' + longitude);
 
-	}); 
-}
+		}); 
+	}
 
-$('#submit').on('click',function(){
-	// var query = $('#search').val().trim();
-	// var geocodeQueryURL = 'https://maps.googleapis.com/maps/api/geocode/json?address=' + query + '&key=AIzaSyAzBECPmc6z_ppq-pud2BgfA6bmZOnC25s'
+	//on click, search and make AJAX ca;;s.
+	$('#submit').on('click',function(){
 
-	geocoder();
+		geocoder();
 
-	
-	$('#search').val('');
+		$('#search').val('');
 
-	return false;
+		return false;
+	});
 });
