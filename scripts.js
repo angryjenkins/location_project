@@ -50,8 +50,9 @@ $(document).ready(function(){
 				$.ajax({url: photoQueryURL, method: 'GET'})
 					.done(function(response) {
 					var dataPhoto = response.results;
+				console.log('Flickr Photos!');
 				console.log(response);
-		}); 
+			}); 
 
 		}); 
 	}
