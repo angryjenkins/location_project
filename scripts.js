@@ -12,6 +12,7 @@ $(document).ready(function(){
 
 		$.ajax({url: geocodeQueryURL, method: 'GET'})
 			.done(function(response) {
+			console.log("GeoCoder!");
 
 			var data = response.results[0];
 			// results[0] pulls the FIRST result from geocoder API.
@@ -29,11 +30,9 @@ $(document).ready(function(){
 			var longitude = data.geometry.location.lng;
 			console.log('Longitude: ' + longitude);
 
-			//will need more AJAX calls to fill other APIs with this info.
 
 			// openWeather API Key = b0b52307eaa0d845eca3022f719aae3d
 			var openWeatherURL = 'http://api.openweathermap.org/data/2.5/find?lat=' + latitude + '&lon=' + longitude + '&cnt=1&APPID=b0b52307eaa0d845eca3022f719aae3d';
-
 
 				$.ajax({url: openWeatherURL, method: 'GET'})
 				.done(function(response) {
@@ -43,10 +42,16 @@ $(document).ready(function(){
 		 		console.log("Open Weather!");
 		 		console.log(response);
 
-
 			});
 
-			
+			var photoQueryURL ='https://api.flickr.com/services/rest/?&method=flickr.photos.search&lat=' + latitude + '&lon='+longitude+'&has_geo=1&per_page=5&format=json&nojsoncallback=1&api_key=883c01db966eed32014011db7cb741de';
+
+
+				$.ajax({url: photoQueryURL, method: 'GET'})
+					.done(function(response) {
+					var dataPhoto = response.results;
+				console.log(response);
+		}); 
 
 		}); 
 	}
