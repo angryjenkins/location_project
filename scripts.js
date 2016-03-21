@@ -37,7 +37,7 @@ $(document).ready(function(){
 
 
 			var showLocation = $('#infoDisplay');
-			var mapDisplay = $('<div class="col-md-12" id="map">');
+			var mapDisplay = $('<div class="row"><div class="col-md-12" id="map">');
 
 			showLocation.empty();
 			// $('.panelTitle').empty();
@@ -58,8 +58,8 @@ $(document).ready(function(){
 			var request = {
 			    location: {lat: latitude, lng: longitude},
 			    radius: '1',
-			    query: 'attractions'
-			  };
+			    query: '(attractions) OR (bars) OR (restaurants) OR (parks) OR (stadiums)'
+		  	};
 
 			function callback(results, status) {
 				console.log("------Google Places Library!");
