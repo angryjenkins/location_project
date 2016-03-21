@@ -31,6 +31,9 @@ $(document).ready(function(){
 			var longitude = data.geometry.location.lng;
 			console.log('Longitude: ' + longitude);
 
+			var country = data.address_components[data.address_components.length - 1].short_name.trim();
+			console.log('Country: ' + country);
+
 			var showLocation = $('#infoDisplay');
 
 			showLocation.empty();
@@ -67,13 +70,13 @@ $(document).ready(function(){
 		 		var showWeather = $('#weatherDisplay');
 				showWeather.empty();
 
-				var fTempInfo = $('<div class="text-center">');
-				fTempInfo.append('<h2>Current Temp: '+ tempF + ' &#8457; , ' + tempC + ' &#8451;</h2>');
-				fTempInfo.append('<p>High: ' + highTempF + ' &#8457; , ' + highTempC + ' &#8451;</p>');
-				fTempInfo.append('<p>Low: ' + lowTempF + ' &#8457; , ' + lowTempC + ' &#8451;</p>');
+				var tempInfo = $('<div class="text-center">');
+				tempInfo.append('<h2>Current Temp: '+ tempF + ' &#8457; , ' + tempC + ' &#8451;</h2>');
+				tempInfo.append('<p>High: ' + highTempF + ' &#8457; , ' + highTempC + ' &#8451;</p>');
+				tempInfo.append('<p>Low: ' + lowTempF + ' &#8457; , ' + lowTempC + ' &#8451;</p>');
 
 
-				showWeather.append(fTempInfo);
+				showWeather.append(tempInfo);
 			});
 
 			var photoQueryURL ='https://api.flickr.com/services/rest/?&method=flickr.photos.search&lat=' + latitude + '&lon=' + longitude +'&has_geo=1&per_page=5&format=json&nojsoncallback=1&api_key=883c01db966eed32014011db7cb741de';
@@ -84,6 +87,16 @@ $(document).ready(function(){
 				console.log('Flickr Photos!');
 				console.log(response);
 			}); 
+
+			//not yet working - UN Data AJAX call.
+			var UNDataQueryURL ='https://api.undata-api.org/WHO/WHO%20Data/' + country + '/records?app_id=04296eeb&app_key=043ebf5a60b2ee49dada51cb8ef705fc';
+
+				$.ajax({url: UNDataQueryURL, method: 'GET'})
+					.done(function(response) {
+				console.log('UN Data!');
+				console.log(response);
+			}); 
+
 		}); 
 	}
 	//on click, search and make AJAX ca;;s.
