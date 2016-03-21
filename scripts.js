@@ -82,7 +82,6 @@ $(document).ready(function(){
 				      placeDisplay.append('<hr />');
 				      //required Google credit
 				      
-
 				      console.log('#'+(i+1));
 				      console.log(place.name);
 				      console.log(place.formatted_address);
