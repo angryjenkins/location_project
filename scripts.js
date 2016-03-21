@@ -9,7 +9,6 @@ $(document).ready(function(){
 	var geocoder = function (){
 	var query = $('#search').val().trim();
 	var geocodeQueryURL = 'https://maps.googleapis.com/maps/api/geocode/json?address=' + query + '&key=AIzaSyAzBECPmc6z_ppq-pud2BgfA6bmZOnC25s';
-	
 
 		$.ajax({url: geocodeQueryURL, method: 'GET'})
 			.done(function(response) {
@@ -34,8 +33,6 @@ $(document).ready(function(){
 			var country = data.address_components[data.address_components.length - 1].long_name.trim();
 			console.log('Country: ' + country);
 
-
-
 			var showLocation = $('#infoDisplay');
 			var mapDisplay = $('<div class="row"><div class="col-md-12" id="map">');
 
@@ -58,7 +55,7 @@ $(document).ready(function(){
 			var request = {
 			    location: {lat: latitude, lng: longitude},
 			    radius: '1',
-			    query: '(attractions) OR (bars) OR (parks) OR (stadiums)'
+			    query: '(attractions) OR (bars) OR (arenas)'
 		  	};
 
 			function callback(results, status) {
@@ -93,8 +90,6 @@ $(document).ready(function(){
 
 			service.textSearch(request, callback);
 			// end of map stuff
-
-
 
 			// openWeather API Key = b0b52307eaa0d845eca3022f719aae3d
 			var openWeatherURL = 'http://api.openweathermap.org/data/2.5/find?lat=' + latitude + '&lon=' + longitude + '&cnt=1&APPID=b0b52307eaa0d845eca3022f719aae3d';
