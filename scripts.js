@@ -46,6 +46,8 @@ $(document).ready(function(){
 			showLocation.append(mapDisplay);
 
 			// attempt at google map places library
+
+
 			var map = new google.maps.Map(document.getElementById('map'), {
 		      center: {lat: latitude, lng: longitude},
 		      zoom: 15
@@ -55,7 +57,7 @@ $(document).ready(function(){
 
 			var request = {
 			    location: {lat: latitude, lng: longitude},
-			    radius: '500',
+			    radius: '1',
 			    query: 'attractions'
 			  };
 
@@ -68,19 +70,23 @@ $(document).ready(function(){
 			    	for (var i = 0; i < results.length; i++) {
 				      var place = results[i];
 				      var types = place.types.join(' , ');
+				      var googleCredit = $('<img src="images/powered-by-google-on-white.png" alt="powered by google">');
 
 				      placeDisplay.append('<h2>' + place.name);
 				      placeDisplay.append('<p>' + place.formatted_address);
-				      placeDisplay.append('<p class="text-muted">Category: ' + types);
-				      placeDisplay.append('<p>Rating: ' + place.rating);
+				      placeDisplay.append('<p class="text-muted">Category: ' + types.replace(/_/g, ' '));
+				      placeDisplay.append('<p>Google Rating: ' + place.rating);
 
 				      placeDisplay.append('<hr />');
+				      //required Google credit
+				      
 
 				      console.log('#'+(i+1));
 				      console.log(place.name);
 				      console.log(place.formatted_address);
 				      console.log(place);
 			    	}
+			    	placeDisplay.append(googleCredit);
 			  	}
 			}
 
