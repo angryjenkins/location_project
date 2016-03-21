@@ -34,7 +34,7 @@ $(document).ready(function(){
 			console.log('Country: ' + country);
 
 			var showLocation = $('#infoDisplay');
-			var mapDisplay = $('<div class="row"><div class="col-md-12" id="map">');
+			var mapDisplay = $('<div id="map">');
 
 			showLocation.empty();
 			// $('.panelTitle').empty();
@@ -43,12 +43,13 @@ $(document).ready(function(){
 			showLocation.append(mapDisplay);
 
 			// attempt at google map places library
+			var mapOptions = {
+				center: new google.maps.LatLng(latitude, longitude),
+				zone: 12,
+				mapTypeId: google.maps.MapTypeId.ROADMAP
+			}
 
-
-			var map = new google.maps.Map(document.getElementById('map'), {
-		      center: {lat: latitude, lng: longitude},
-		      zoom: 15
-		    });
+			var map = new google.maps.Map(document.getElementById('map'), mapOptions);
 
 			var service = new google.maps.places.PlacesService(map);
 
