@@ -13,7 +13,7 @@ $(document).ready(function(){
 
 		$.ajax({url: geocodeQueryURL, method: 'GET'})
 			.done(function(response) {
-			console.log("GeoCoder!");
+			console.log("------GeoCoder!");
 
 			var data = response.results[0];
 			// results[0] pulls the FIRST result from geocoder API.
@@ -62,19 +62,19 @@ $(document).ready(function(){
 			  };
 
 			function callback(results, status) {
-				console.log("Google Places Library!");
+				console.log("------Google Places Library!");
 				var placeDisplay = $('#buzzDisplay');
 				placeDisplay.empty();
 
 		  		if (status == google.maps.places.PlacesServiceStatus.OK) {
 			    	for (var i = 0; i < results.length; i++) {
 				      var place = results[i];
-				      var types = place.types.join(' , ');
+				      var types = place.types.join(' , ').replace(/_/g, ' ');
 				      var googleCredit = $('<img src="images/powered-by-google-on-white.png" alt="powered by google">');
 
 				      placeDisplay.append('<h2>' + place.name);
-				      placeDisplay.append('<p>' + place.formatted_address);
-				      placeDisplay.append('<p class="text-muted">Category: ' + types.replace(/_/g, ' '));
+				      placeDisplay.append('<p class="text-info">' + place.formatted_address);
+				      placeDisplay.append('<p class="text-muted">Category: ' + types);
 				      placeDisplay.append('<p>Google Rating: ' + place.rating);
 
 				      placeDisplay.append('<hr />');
@@ -101,7 +101,7 @@ $(document).ready(function(){
 			$.ajax({url: openWeatherURL, method: 'GET'})
 			.done(function(response) {
 			
-	 		console.log("Open Weather!");
+	 		console.log("------Open Weather!");
 	 		console.log(response);
 
 	 		var weatherData = response.list[0];
@@ -137,7 +137,7 @@ $(document).ready(function(){
 			$.ajax({url: photoQueryURL, method: 'GET'})
 				.done(function(response) {
 				var dataPhoto = response.results;
-			console.log('Flickr Photos!');
+			console.log('------Flickr Photos!');
 			console.log(response);
 		}); 
 		//not yet working - UN Data AJAX call.
