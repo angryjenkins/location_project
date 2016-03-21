@@ -47,7 +47,7 @@ $(document).ready(function(){
 
 			// attempt at google map places library
 			var map = new google.maps.Map(document.getElementById('map'), {
-		      center: query,
+		      center: {lat: latitude, lng: longitude},
 		      zoom: 15
 		    });
 
@@ -67,10 +67,11 @@ $(document).ready(function(){
 		  		if (status == google.maps.places.PlacesServiceStatus.OK) {
 			    	for (var i = 0; i < results.length; i++) {
 				      var place = results[i];
-				      var placeDisplay = $('#buzzDisplay');
+				      var types = place.types.join(' , ');
 
 				      placeDisplay.append('<h2>' + place.name);
 				      placeDisplay.append('<p>' + place.formatted_address);
+				      placeDisplay.append('<p class="text-muted">Category: ' + types);
 				      placeDisplay.append('<p>Rating: ' + place.rating);
 
 				      placeDisplay.append('<hr />');
