@@ -77,6 +77,8 @@ $(document).ready(function(){
 				      placeDisplay.append('<p class="text-muted">Category: ' + types);
 				      placeDisplay.append('<p>Google Rating: ' + place.rating);
 
+				      //GOTTAFIX: pull the photo from the getUrl function - put all this in a media object?
+
 				      placeDisplay.append('<hr />');
 				      //required Google credit
 				      
