@@ -31,14 +31,14 @@ $(document).ready(function(){
 			var longitude = data.geometry.location.lng;
 			console.log('Longitude: ' + longitude);
 
-			var country = data.address_components[data.address_components.length - 1].short_name.trim();
+			var country = data.address_components[data.address_components.length - 1].long_name.trim();
 			console.log('Country: ' + country);
 
 			var showLocation = $('#infoDisplay');
 
 			showLocation.empty();
-			$('.panelTitle').empty();
-			$('.panelTitle').append(location);
+			// $('.panelTitle').empty();
+			// $('.panelTitle').append(location);
 			showLocation.append('<div class="row"><div class="col-md-12 text-center"><p>' + location + '</p></div><div class="col-md-12 text-center"><p>(' + latitude.toFixed(2) + ' , ' + longitude.toFixed(2) + ')</p><div></div>');
 
 			// openWeather API Key = b0b52307eaa0d845eca3022f719aae3d
@@ -87,7 +87,6 @@ $(document).ready(function(){
 				console.log('Flickr Photos!');
 				console.log(response);
 			}); 
-
 			//not yet working - UN Data AJAX call.
 			var UNDataQueryURL ='https://api.undata-api.org/WHO/WHO%20Data/' + country + '/records?app_id=04296eeb&app_key=043ebf5a60b2ee49dada51cb8ef705fc';
 
@@ -97,8 +96,18 @@ $(document).ready(function(){
 				console.log(response);
 			}); 
 
+			//Google Places Error XMLHttpRequest cannot load - does Faisal have the fix?
+			var googlePlacesQuery ='https://maps.googleapis.com/maps/api/place/textsearch/json?query=restaurants+in+' + query + '&key=AIzaSyAzBECPmc6z_ppq';
+
+				$.ajax({url: googlePlacesQuery, method: 'GET'})
+					.done(function(response) {
+				console.log('Google Places - "Restaurants In" Query!');
+				console.log(response);
+			}); 
 		}); 
 	}
+
+
 	//on click, search and make AJAX ca;;s.
 	$('#submit').on('click',function(){
 
