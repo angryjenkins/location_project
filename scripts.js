@@ -58,7 +58,7 @@ $(document).ready(function(){
 			var request = {
 			    location: {lat: latitude, lng: longitude},
 			    radius: '1',
-			    query: '(attractions) OR (bars) OR (restaurants) OR (parks) OR (stadiums)'
+			    query: '(attractions) OR (bars) OR (parks) OR (stadiums)'
 		  	};
 
 			function callback(results, status) {
@@ -67,7 +67,7 @@ $(document).ready(function(){
 				placeDisplay.empty();
 
 		  		if (status == google.maps.places.PlacesServiceStatus.OK) {
-			    	for (var i = 0; i < results.length; i++) {
+			    	for (var i = 0; i < 5; i++) {
 				      var place = results[i];
 				      var types = place.types.join(' , ').replace(/_/g, ' ');
 				      var googleCredit = $('<img src="images/powered-by-google-on-white.png" alt="powered by google">');
