@@ -69,9 +69,8 @@ $(document).ready(function(){
 
 				var fTempInfo = $('<div class="text-center">');
 				fTempInfo.append('<h2>Current Temp: '+ tempF + ' &#8457; , ' + tempC + ' &#8451;</h2>');
-				fTempInfo.append('<h2>High: ' + highTempF + ' &#8457; , ' + highTempC + ' &#8451;</h2>');
-				fTempInfo.append('<h2>Low: ' + lowTempF + ' &#8457; , ' + lowTempC + ' &#8451;</h2>');
-
+				fTempInfo.append('<p>High: ' + highTempF + ' &#8457; , ' + highTempC + ' &#8451;</p>');
+				fTempInfo.append('<p>Low: ' + lowTempF + ' &#8457; , ' + lowTempC + ' &#8451;</p>');
 
 
 				showWeather.append(fTempInfo);
@@ -87,27 +86,6 @@ $(document).ready(function(){
 			}); 
 		}); 
 	}
-
-	$('.btn-toggle').click(function() {
-	    $(this).find('.btn').toggleClass('active');  
-	    
-	    if ($(this).find('.btn-primary').size()>0) {
-	    	$(this).find('.btn').toggleClass('btn-primary');
-	    }
-	    if ($(this).find('.btn-danger').size()>0) {
-	    	$(this).find('.btn').toggleClass('btn-danger');
-	    }
-	    if ($(this).find('.btn-success').size()>0) {
-	    	$(this).find('.btn').toggleClass('btn-success');
-	    }
-	    if ($(this).find('.btn-info').size()>0) {
-	    	$(this).find('.btn').toggleClass('btn-info');
-	    }
-	    
-	    $(this).find('.btn').toggleClass('btn-default');
-	       
-	});
-
 	//on click, search and make AJAX ca;;s.
 	$('#submit').on('click',function(){
 
