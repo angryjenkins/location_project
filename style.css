@@ -4,8 +4,25 @@
 	background-image: url(images/mapBG01.jpg);
 	background-size: cover;
 }
+.jumbotron h1{
+	color: #ffffff;
+	background-color: #000000;
+	opacity: 0.7;
+}
+.nav-tabs.nav-justified>li>a {
+	font-size: 20px;
+}
 
 a {
 	color: #666;
 	font-weight:500;
+}
+
+#infoDisplay, #weatherDisplay, #newsDisplay, #buzzDisplay {
+	font-size: 24px;
+}
+@media screen and (min-width: 1000px) {
+	.jumbotron{
+		background-size: 1300px 400px;
+	}
 }

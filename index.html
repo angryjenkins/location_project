@@ -12,6 +12,9 @@
 	<script src="https://code.jquery.com/jquery.js"></script>
 	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
 
+	<!-- HTML MOD - add Map Places API Javascript - invalid key!-->
+	<script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBXu_yk8KUve9mHHk20jh3wAU7olb_maoo&libraries=places"></script>
+	
 </head>
 <body>
 <div class="jumbotron">
@@ -57,7 +60,7 @@
 				</div><!-- /.navbar-collapse -->
 			</div>
 		</nav>
-
+		<h1 id="cityName"></h1>
 	</div>
 </div>
 <div class="container-fluid">
@@ -70,7 +73,6 @@
 				    <li role="presentation"><a href="#news" aria-controls="news" role="tab" data-toggle="tab">News</a></li>
 				    <li role="presentation"><a href="#buzz" aria-controls="buzz" role="tab" data-toggle="tab">Buzz</a></li>
 			  	</ul>
-
 			  	<!-- Tab panes -->
 			  	
 			</div>
@@ -80,10 +82,10 @@
 						<div class="col-md-12">
 							<div class="panel panel-default">
 								<div class="panel-heading">
-									<h2>General Information</h2>
+									<h2 class="panelTitle">General Information</h2>
 								</div>
 								<div class="panel-body" id="infoDisplay">
-									
+									<p>general inormation about the location.</p>
 								</div>
 							</div>
 						</div>
@@ -94,10 +96,10 @@
 						<div class="col-md-12">
 							<div class="panel panel-default">
 								<div class="panel-heading">
-									<h2>Weather</h2>
+									<h2 class="panelTitle">Weather</h2>
 								</div>
 								<div class="panel-body" id="weatherDisplay">
-									
+									<p>weather information and forecast.</p>
 								</div>
 							</div>
 						</div>
@@ -108,10 +110,10 @@
 						<div class="col-md-12">
 							<div class="panel panel-default">
 								<div class="panel-heading">
-									<h2>News</h2>
+									<h2 class="panelTitle">News</h2>
 								</div>
 								<div class="panel-body" id="newsDisplay">
-									
+									<p>news and current events.</p>
 								</div>
 							</div>
 						</div>
@@ -122,10 +124,10 @@
 						<div class="col-md-12">
 							<div class="panel panel-default">
 								<div class="panel-heading">
-									<h2>Buzz</h2>
+									<h2 class="panelTitle">Buzz</h2>
 								</div>
 								<div class="panel-body" id="buzzDisplay">
-									
+									<p>things to do.</p>
 								</div>
 							</div>
 						</div>
