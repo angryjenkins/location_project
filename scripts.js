@@ -52,6 +52,7 @@ $(document).ready(function(){
 		    });
 
 			var service = new google.maps.places.PlacesService(map);
+
 			var request = {
 			    location: {lat: latitude, lng: longitude},
 			    radius: '500',
@@ -60,17 +61,32 @@ $(document).ready(function(){
 
 			function callback(results, status) {
 				console.log("Google Places Library!");
+				var placeDisplay = $('#buzzDisplay');
+				placeDisplay.empty();
+
 		  		if (status == google.maps.places.PlacesServiceStatus.OK) {
-			    	// for (var i = 0; i < results.length; i++) {
-				      // var place = results[i];
-				      // createMarker(results[i]);
-				      console.log(results);
-				      console.log(status);
-			    	// }
+			    	for (var i = 0; i < results.length; i++) {
+				      var place = results[i];
+				      var placeDisplay = $('#buzzDisplay');
+
+				      placeDisplay.append('<h2>' + place.name);
+				      placeDisplay.append('<p>' + place.formatted_address);
+				      placeDisplay.append('<p>Rating: ' + place.rating);
+
+				      placeDisplay.append('<hr />');
+
+				      console.log('#'+(i+1));
+				      console.log(place.name);
+				      console.log(place.formatted_address);
+				      console.log(place);
+			    	}
 			  	}
 			}
 
 			service.textSearch(request, callback);
+			// end of map stuff
+
+
 
 			// openWeather API Key = b0b52307eaa0d845eca3022f719aae3d
 			var openWeatherURL = 'http://api.openweathermap.org/data/2.5/find?lat=' + latitude + '&lon=' + longitude + '&cnt=1&APPID=b0b52307eaa0d845eca3022f719aae3d';
