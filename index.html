@@ -13,35 +13,59 @@
 	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
 
 <style type="text/css">
-      html, body { height: 100px; margin: 0; padding: 0; }
-      #map { height:400px; }
+      html, body { height: 100px; margin: 0; padding: 0; 
+      }
+      #map { height:400px;
+       }
+       #floating-panel {
+        position: relative;
+        top: 100px;
+        float:right;
+        right:38px;
+        z-index: 5;
+        background-color: #fff;
+        padding: 5px;
+        border: 1px solid #999;
+        text-align: center;
+        font-family: 'Roboto','sans-serif';
+        line-height: 30px;
+        padding-left: 10px;
+      }
     </style>
 </head>
 <body>
-
-    
+<div id="floating-panel"> <input id="address" type="textbox" value="Sydney, NSW">
+           <input id="submit" type="button" value="Find on Map"></div>
     <script>
-    function initialize() {
-        var fenway = {lat: 42.345573, lng: -71.098326};
+      function initMap() {
         var map = new google.maps.Map(document.getElementById('map'), {
-          center: fenway,
-          zoom: 3
+          zoom: 2,
+          center: {lat: -34.397, lng: 150.644}
         });
-        var panorama = new google.maps.StreetViewPanorama(
-            document.getElementById('pano'), {
-              position: fenway,
-              pov: {
-                heading: 34,
-                pitch: 10
-              }
-            });
-        map.setStreetView(panorama);
-      }
-      </script>
+        var geocoder = new google.maps.Geocoder();
 
+        document.getElementById('submit').addEventListener('click', function() {
+          geocodeAddress(geocoder, map);
+        });
+      }
+
+      function geocodeAddress(geocoder, resultsMap) {
+        var address = document.getElementById('address').value;
+        geocoder.geocode({'address': address}, function(results, status) {
+          if (status === google.maps.GeocoderStatus.OK) {
+            resultsMap.setCenter(results[0].geometry.location);
+            var marker = new google.maps.Marker({
+              map: resultsMap,
+              position: results[0].geometry.location
+            });
+          } else {
+            alert('Geocode was not successful for the following reason: ' + status);
+          }
+        });
+      }
+    </script>
     <script async defer
-        src="https://maps.googleapis.com/maps/api/js?key=AIzaSyApdGBuNgoaNyQZNvXFacBu6Za3cpxxWGc
-        &libraries=visualization&callback=initialize">
+    src="https://maps.googleapis.com/maps/api/js?ke=AIzaSyApdGBuNgoaNyQZNvXFacBu6Za3cpxxWGc&callback=initMap">
     </script>
 
 <div class="jumbotron ">
@@ -116,6 +140,7 @@
 								<div class="panel-heading">
 									<h2>General Information</h2>
 								</div>
+					
 								<div class="panel-body" id="map">
 
 
