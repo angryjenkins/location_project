@@ -9,7 +9,10 @@ $(document).ready(function(){
 	var geocoder = function (){
 	var query = $('#search').val().trim();
 	var geocodeQueryURL = 'https://maps.googleapis.com/maps/api/geocode/json?address=' + query + '&key=AIzaSyAzBECPmc6z_ppq-pud2BgfA6bmZOnC25s';
-	
+
+	  
+
+
 		$.ajax({url: geocodeQueryURL, method: 'GET'})
 			.done(function(response) {
 			console.log("GeoCoder!");
@@ -53,10 +56,12 @@ $(document).ready(function(){
 				console.log('Flickr Photos!');
 				console.log(response);
 			}); 
-					
+
+				
+				
 			var beer='http://api.brewerydb.com/v2/search/geo/point?lat='+latitude+'&lng='+longitude+'&key=323c58933e00881cf1392f01e78dbbe9';
 			
-
+	
 			$.ajax({url: beer, method: 'GET'})
 				.done(function(response) {
 					var info= response.data[0];
@@ -66,14 +71,23 @@ $(document).ready(function(){
 					console.log("description: "+ response.data[0].brewery.description); //description
 					console.log("brewery website: "+ response.data[0].brewery.website)
 					console.log("image: "+ response.data[0].brewery.images.medium)
+					
+					var image=$('<img>');
+					image.attr('src',response.data[0].brewery.images.medium)
+					image.addClass('beerimage');
+				$('#buzzDisplay').empty();
+				$('#buzzDisplay').append("<br/>"+response.data[0].brewery.name)
+								.append(image);
 
-			}); 
-			$('#newsbutton').on('click',function(){
-				
+
+				}); 
+			
+			
+			
 			var news= 'https://webhose.io/search?token=8aafca50-182e-46d2-9757-4836befd1363&format=json&q='+query+'&location='+query+'&thread.title='+query+'';
 			$.ajax({url: news, method: 'GET'})
 				.done(function(response) {
-					//$(this).addClass('active');
+					$(this).addClass('active');
 				var random=Math.floor(Math.random() * 10) + 1;
 					var info= response.posts[random];
 					var info1=response.posts[random+1];
@@ -86,38 +100,30 @@ $(document).ready(function(){
 					var y= link.link(info.thread.url);
 					var z=link.link(info1.thread.url);
 
+					$('#newsDisplay').empty();
 					//console.log(info.thread.url);
 					$('#newsDisplay').append(" <br/>"+ "1: " +info.thread.title+"<br/>")
 						.append(+"Click here! "+ y+"<br/>")
 						.append("<br/>"+ "2: "+info1.thread.title)
 						.append("<br/>"+"Click here! "+ z);
-					
-					
-				//issue:when you put in a new country it wont get rid of the last countires articl
+						
+						
+				//if it doesnt have the class active in delete the content inside of it. 	
 
 			}); 
-
-		}); 
-	
+		 
 			//click on a button and empties the articles in newsDisplay
-			$('#buzzbutton, #infobutton, #weatherbutton').on('click',function(){
-					$('#newsDisplay').empty();
-					
-					
-			});
-			
-
-
 		});
+		 
 	}
 
 	//on click, search and make AJAX ca;;s.
 	$('#submit').on('click',function(){
-				alert("hey")
-		$('#newsDisplay').empty();
+
 		geocoder();
-	$('#newsDisplay').empty();
+
 		$('#search').val('');
+
 		return false;
 	});
 });

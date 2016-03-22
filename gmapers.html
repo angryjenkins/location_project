@@ -1,0 +1,30 @@
+
+<!DOCTYPE html>
+<html>
+  <head>
+  <script src="https://code.jquery.com/jquery.js"></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
+    <style type="text/css">
+      html, body { height: 100%; margin: 0; padding: 0; }
+      #map { height: 100%; }
+    </style>
+  </head>
+  <body>
+    <div id="map"></div>
+    <div id="pan0"></div>
+
+
+<script>
+var geocodeQueryURL = "https://google-developers.appspot.com/maps/documentation/utils/geocoder/api/key=AIzaSyApdGBuNgoaNyQZNvXFacBu6Za3cpxxWGc#q%3Dafrica";
+
+	  
+
+
+		$.ajax({url: geocodeQueryURL, method: 'GET'})
+			.done(function(response) {
+			console.log("GeoCoder!");
+
+});
+
+
+</script>
