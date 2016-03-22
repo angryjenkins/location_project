@@ -6,6 +6,9 @@
 //geocoder function with AJAX calls.
 
 $(document).ready(function(){
+	
+
+
 	var geocoder = function (){
 	var query = $('#search').val().trim();
 	var geocodeQueryURL = 'https://maps.googleapis.com/maps/api/geocode/json?address=' + query + '&key=AIzaSyAzBECPmc6z_ppq-pud2BgfA6bmZOnC25s';

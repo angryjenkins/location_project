@@ -21,7 +21,8 @@
         position: relative;
         top: 100px;
         float:right;
-        right:38px;
+        right:65px;
+
         z-index: 5;
         background-color: #fff;
         padding: 5px;
@@ -31,9 +32,21 @@
         line-height: 30px;
         padding-left: 10px;
       }
+      #mapButton{
+      	width:400px;
+      	position:relative;
+      	bottom:33px;
+      	left:17px;
+      	font-family: 'Roboto','sans-serif';
+      	background-color: #fff;
+      	color:red;
+      }
     </style>
 </head>
 <body>
+<div style="margin-left: 5px; margin-right: 5px; z-index: 1000000; position: absolute; left: 0px; bottom: 0px;"><a target="_blank" href="https://maps.google.com/maps?ll=-34.397,33.046344&amp;z=2&amp;t=m&amp;hl=en-US&amp;gl=US&amp;mapclient=apiv3" title="Click to see this area on Google Maps" style="position: static; overflow: visible; float: none; display: inline;"><div style="width: 66px; height: 26px; cursor: pointer;"><button name="subject" id="mapButton" type="submit" value="HTML">Click to find out more!!</button draggable="false" ></div></a></div>
+
+
 <div id="floating-panel"> <input id="address" type="textbox" value="Sydney, NSW">
            <input id="submitt" type="button" value="Find on Map"></div>
     <script>
@@ -143,9 +156,6 @@
 					
 								<div class="panel-body" id="map">
 
-
-								  
-								
 								</div>
 							</div>
 						</div>
