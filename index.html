@@ -35,7 +35,7 @@
 </head>
 <body>
 <div id="floating-panel"> <input id="address" type="textbox" value="Sydney, NSW">
-           <input id="submit" type="button" value="Find on Map"></div>
+           <input id="submitt" type="button" value="Find on Map"></div>
     <script>
       function initMap() {
         var map = new google.maps.Map(document.getElementById('map'), {
@@ -44,7 +44,7 @@
         });
         var geocoder = new google.maps.Geocoder();
 
-        document.getElementById('submit').addEventListener('click', function() {
+        document.getElementById('submitt').addEventListener('click', function() {
           geocodeAddress(geocoder, map);
         });
       }
@@ -65,7 +65,7 @@
       }
     </script>
     <script async defer
-    src="https://maps.googleapis.com/maps/api/js?ke=AIzaSyApdGBuNgoaNyQZNvXFacBu6Za3cpxxWGc&callback=initMap">
+    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyApdGBuNgoaNyQZNvXFacBu6Za3cpxxWGc&callback=initMap">
     </script>
 
 <div class="jumbotron ">
