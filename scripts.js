@@ -94,6 +94,8 @@ $(document).ready(function(){
 				var random=Math.floor(Math.random() * 10) + 1;
 					var info= response.posts[random];
 					var info1=response.posts[random+1];
+					var info2=response.posts[random+2];
+					var info3=response.posts[random+3];
 					console.log(info);
 					console.log(info1);
 					console.log(info1.thread.title);
@@ -102,13 +104,19 @@ $(document).ready(function(){
 					var x=info.thread.title;
 					var y= link.link(info.thread.url);
 					var z=link.link(info1.thread.url);
+					var a=link.link(info2.thread.url);
+					var b=link.link(info3.thread.url);
 
 					$('#newsDisplay').empty();
 					//console.log(info.thread.url);
 					$('#newsDisplay').append(" <br/>"+ "1: " +info.thread.title+"<br/>")
 						.append(+"Click here! "+ y+"<br/>")
 						.append("<br/>"+ "2: "+info1.thread.title)
-						.append("<br/>"+"Click here! "+ z);
+						.append("<br/>"+"Click here! "+ z)
+						.append("<br/>"+ "3: "+info2.thread.title)
+						.append("<br/>"+"Click here! "+ a)
+						.append("<br/>"+ "4: "+info3.thread.title)
+						.append("<br/>"+"Click here! "+ b);
 						
 						
 				//if it doesnt have the class active in delete the content inside of it. 	
