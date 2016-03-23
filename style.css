@@ -20,7 +20,7 @@ a {
 }
 
 #infoDisplay, #weatherDisplay, #newsDisplay, #buzzDisplay {
-	font-size: 24px;
+	font-size: 18px;
 }
 
 #map{

@@ -70,10 +70,13 @@ $(document).ready(function(){
 				      var types = place.types.join(' , ').replace(/_/g, ' ');
 				      var googleCredit = $('<img src="images/powered-by-google-on-white.png" alt="powered by google">');
 
-				      placeDisplay.append('<h2>' + place.name);
-				      placeDisplay.append('<p class="text-info">' + place.formatted_address);
-				      placeDisplay.append('<p class="text-muted">Category: ' + types);
-				      placeDisplay.append('<p>Google Rating: ' + place.rating);
+				      // placeDisplay.append('<h2>' + place.name);
+				      // placeDisplay.append('<p class="text-info">' + place.formatted_address);
+				      // placeDisplay.append('<p class="text-muted">Category: ' + types);
+				      // placeDisplay.append('<p>Google Rating: ' + place.rating);
+
+
+				      placeDisplay.append('<div class="media"><div class="media-left media-middle"><a href="#"><img class="media-object" src="..." alt="..."></a></div><div class="media-body"><h4 class="media-heading">' + place.name + '</h4><p>Google Rating: ' + place.formatted_address + '<br />' + place.rating + '</p><p class="text-muted">' + types  + '</p></div></div>');
 
 				      //GOTTAFIX: pull the photo from the getUrl function - put all this in a media object?
 
