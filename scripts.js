@@ -35,7 +35,7 @@ $(document).ready(function(){
 
 			var showLocation = $('#infoDisplay');
 			var headLoc = $('#headerLoc');
-			var mapDisplay = $('<div id="map">');
+			// var mapDisplay = $('<div id="map">');
 
 			showLocation.empty();
 			headLoc.empty();
@@ -44,7 +44,7 @@ $(document).ready(function(){
 
 			headLoc.append(location);
 			showLocation.append('<div class="row"><div class="col-md-12 text-center"><p>' + location + '</p></div><div class="col-md-12 text-center"><p>(' + latitude.toFixed(2) + ' , ' + longitude.toFixed(2) + ')</p><div></div>');
-			showLocation.append(mapDisplay);
+			// showLocation.append(mapDisplay);
 
 			// attempt at google map places library
 			var mapOptions = {
@@ -56,8 +56,6 @@ $(document).ready(function(){
 			var map = new google.maps.Map(document.getElementById('map'), mapOptions);
 
 			var service = new google.maps.places.PlacesService(map);
-
-
 
 			var request = {
 			    location: {lat: latitude, lng: longitude},
@@ -81,7 +79,7 @@ $(document).ready(function(){
 		      			} else {
 		      				var placePhoto = "images/no-image-available.png";
 		      			}
-				      	
+
 			     	 	var googleCredit = $('<img src="images/powered-by-google-on-white.png" alt="powered by google">');
 
 					      // placeDisplay.append('<h2>' + place.name);
@@ -90,7 +88,7 @@ $(document).ready(function(){
 					      // placeDisplay.append('<p>Google Rating: ' + place.rating);
 
 
-				     	placeDisplay.append('<div class="media"><div class="media-left media-middle"><a href="#"><img class="media-object" src="' + placePhoto + '" alt="' + location + '"></a></div><div class="media-body"><h4 class="media-heading">' + place.name + '</h4><p>Google Rating: ' + place.rating + '<br />' + place.formatted_address + '</p><p class="text-muted">' + types  + '</p></div></div>');
+				     	placeDisplay.append('<div class="media"><div class="media-left media-middle"><img class="media-object" src="' + placePhoto + '" alt="' + location + '"></div><div class="media-body"><h4 class="media-heading">' + place.name + '</h4><p>Google Rating: ' + place.rating + '<br />' + place.formatted_address + '</p><p class="text-muted">' + types  + '</p></div></div>');
 
 					      //GOTTAFIX: pull the photo from the getUrl function - put all this in a media object?
 
@@ -123,6 +121,10 @@ $(document).ready(function(){
 	 		var tempK = weatherData.main.temp;
 	 		var highTempK = weatherData.main.temp_max;
 	 		var lowTempK = weatherData.main.temp_min;
+	 		var condition = weatherData.weather[0].description;
+	 		var windSpeed = weatherData.wind.speed;
+	 		var windDir = weatherData.wind.deg;
+
 
 	 		console.log(tempK);
 
@@ -133,6 +135,7 @@ $(document).ready(function(){
 	 		var lowTempC = Math.round(lowTempK - 273.15);
 	 		var lowTempF = Math.round((lowTempK * 9/5) - 459.67);
 
+
 	 		console.log(tempF + "F , " + tempC + "C");
 
 	 		var showWeather = $('#weatherDisplay');
@@ -140,11 +143,22 @@ $(document).ready(function(){
 
 			var tempInfo = $('<div class="text-center">');
 			tempInfo.append('<h2>Current Temp: '+ tempF + ' &#8457; , ' + tempC + ' &#8451;</h2>');
+			tempInfo.append('<p class="alert alert-info">' + condition);
 			tempInfo.append('<p>High: ' + highTempF + ' &#8457; , ' + highTempC + ' &#8451;</p>');
 			tempInfo.append('<p>Low: ' + lowTempF + ' &#8457; , ' + lowTempC + ' &#8451;</p>');
-
+			tempInfo.append('<p>Wind Speed: ' + windSpeed + 'km/h - Direction: ' + windDir + '&deg;</p>');
+			tempInfo.append('<div class="clearfix">');
 
 			showWeather.append(tempInfo);
+		});
+
+		var fiveDayForecastURL = 'http://api.openweathermap.org/data/2.5/forecast?lat=' + latitude + '&lon=' + longitude + '&cnt=1&APPID=b0b52307eaa0d845eca3022f719aae3d';
+
+			$.ajax({url: fiveDayForecastURL, method: 'GET'})
+			.done(function(response) {
+			
+	 		console.log("------Five Day Forecast!!");
+	 		console.log(response);
 		});
 
 		var photoQueryURL ='https://api.flickr.com/services/rest/?&method=flickr.photos.search&lat=' + latitude + '&lon=' + longitude +'&has_geo=1&per_page=5&format=json&nojsoncallback=1&api_key=883c01db966eed32014011db7cb741de';
