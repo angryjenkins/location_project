@@ -142,12 +142,11 @@ $(document).ready(function(){
 			showWeather.empty();
 
 			var tempInfo = $('<div class="text-center">');
-			tempInfo.append('<h2>Current Temp: '+ tempF + ' &#8457; , ' + tempC + ' &#8451;</h2>');
-			tempInfo.append('<p class="alert alert-info">' + condition);
-			tempInfo.append('<p>High: ' + highTempF + ' &#8457; , ' + highTempC + ' &#8451;</p>');
-			tempInfo.append('<p>Low: ' + lowTempF + ' &#8457; , ' + lowTempC + ' &#8451;</p>');
-			tempInfo.append('<p>Wind Speed: ' + windSpeed + 'km/h - Direction: ' + windDir + '&deg;</p>');
-			tempInfo.append('<div class="clearfix">');
+			showLocation.append('<h2>Current Temp: '+ tempF + ' &#8457; , ' + tempC + ' &#8451;</h2>');
+			showLocation.append('<p class="alert alert-info">' + condition);
+			showLocation.append('<p>High: ' + highTempF + ' &#8457; , ' + highTempC + ' &#8451; - Low: '  + lowTempF + ' &#8457; , ' + lowTempC + ' &#8451;</p>');
+			showLocation.append('<p>Wind Speed: ' + windSpeed + 'km/h - Direction: ' + windDir + '&deg;</p>');
+			showLocation.append('<div class="clearfix">');
 
 			showWeather.append(tempInfo);
 		});
