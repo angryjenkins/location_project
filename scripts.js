@@ -34,11 +34,15 @@ $(document).ready(function(){
 			console.log('Country: ' + country);
 
 			var showLocation = $('#infoDisplay');
+			var headLoc = $('#headerLoc');
 			var mapDisplay = $('<div id="map">');
 
 			showLocation.empty();
+			headLoc.empty();
 			// $('.panelTitle').empty();
 			// $('.panelTitle').append(location);
+
+			headLoc.append(location);
 			showLocation.append('<div class="row"><div class="col-md-12 text-center"><p>' + location + '</p></div><div class="col-md-12 text-center"><p>(' + latitude.toFixed(2) + ' , ' + longitude.toFixed(2) + ')</p><div></div>');
 			showLocation.append(mapDisplay);
 
@@ -53,10 +57,13 @@ $(document).ready(function(){
 
 			var service = new google.maps.places.PlacesService(map);
 
+
+
 			var request = {
 			    location: {lat: latitude, lng: longitude},
-			    radius: '1',
-			    query: 'attractions'
+			    radius: '5000',
+			    query: 'attractions',
+			    rankBy: google.maps.places.RankBy.DISTANCE
 		  	};
 
 			function callback(results, status) {
@@ -66,28 +73,36 @@ $(document).ready(function(){
 
 		  		if (status == google.maps.places.PlacesServiceStatus.OK) {
 			    	for (var i = 0; i < 10; i++) {
-				      var place = results[i];
-				      var types = place.types.join(' , ').replace(/_/g, ' ');
-				      var googleCredit = $('<img src="images/powered-by-google-on-white.png" alt="powered by google">');
+				      	var place = results[i];
+				      	var types = place.types.join(' , ').replace(/_/g, ' ');
 
-				      // placeDisplay.append('<h2>' + place.name);
-				      // placeDisplay.append('<p class="text-info">' + place.formatted_address);
-				      // placeDisplay.append('<p class="text-muted">Category: ' + types);
-				      // placeDisplay.append('<p>Google Rating: ' + place.rating);
+				      	if(place.photos){
+	      					var placePhoto = place.photos[0].getUrl({'maxWidth': 200, 'maxHeight': 200});
+		      			} else {
+		      				var placePhoto = "images/no-image-available.png";
+		      			}
+				      	
+			     	 	var googleCredit = $('<img src="images/powered-by-google-on-white.png" alt="powered by google">');
+
+					      // placeDisplay.append('<h2>' + place.name);
+					      // placeDisplay.append('<p class="text-info">' + place.formatted_address);
+					      // placeDisplay.append('<p class="text-muted">Category: ' + types);
+					      // placeDisplay.append('<p>Google Rating: ' + place.rating);
 
 
-				      placeDisplay.append('<div class="media"><div class="media-left media-middle"><a href="#"><img class="media-object" src="..." alt="..."></a></div><div class="media-body"><h4 class="media-heading">' + place.name + '</h4><p>Google Rating: ' + place.formatted_address + '<br />' + place.rating + '</p><p class="text-muted">' + types  + '</p></div></div>');
+				     	placeDisplay.append('<div class="media"><div class="media-left media-middle"><a href="#"><img class="media-object" src="' + placePhoto + '" alt="' + location + '"></a></div><div class="media-body"><h4 class="media-heading">' + place.name + '</h4><p>Google Rating: ' + place.rating + '<br />' + place.formatted_address + '</p><p class="text-muted">' + types  + '</p></div></div>');
 
-				      //GOTTAFIX: pull the photo from the getUrl function - put all this in a media object?
+					      //GOTTAFIX: pull the photo from the getUrl function - put all this in a media object?
 
-				      placeDisplay.append('<hr />');
-				      //required Google credit
-				      
-				      console.log('#'+(i+1));
-				      console.log(place.name);
-				      console.log(place.formatted_address);
-				      console.log(place);
-			    	}
+					      placeDisplay.append('<hr />');
+					      //required Google credit
+					      
+					      console.log('#'+(i+1));
+					      console.log(place.name);
+					      console.log(place.formatted_address);
+					      console.log(place);
+					      console.log(placePhoto);
+				    	}
 			    	placeDisplay.append(googleCredit);
 			  	}
 			}
