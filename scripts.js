@@ -22,6 +22,9 @@ $(document).ready(function(){
 			var place_id = data.place_id;
 			console.log('GooglePlace ID: ' + place_id);
 
+			var query1=data.formatted_address
+			var query2=query.toLowerCase();
+
 			var latitude = data.geometry.location.lat;
 			console.log('Latitude: ' + latitude);
 
@@ -32,23 +35,25 @@ $(document).ready(function(){
 			console.log('Country: ' + country);
 
 			var showLocation = $('#infoDisplay');
+			var showWeather = $('#weatherDisplay');
 			var showLocationFill = $('<div class="row">');
 			var headLoc = $('#headerLoc');
 
+
 			//this clears the DIVs of all contents.
 			showLocation.empty();
+			showWeather.empty();
 			headLoc.empty();
+
 			
 
 			headLoc.append(location);
-
 			//this is the placeholder for the google map!
 
-			showLocationFill.append('<div class="col-md-6" id="locationInfo"><h2><i class="glyphicon glyphicon-globe"></i> ' + location + ' <span class="text-smaller">('  + latitude.toFixed(2) + ' , ' + longitude.toFixed(2) + ')</span></h2></div>');
-			showLocationFill.append('<div class="col-md-6" id="map">');
+			showLocationFill.append('<div class="col-md-12" id="locationInfo"><h2><i class="glyphicon glyphicon-globe"></i> ' + location + ' <span class="text-smaller">('  + latitude.toFixed(2) + ' , ' + longitude.toFixed(2) + ')</span></h2></div>');
 
 
-			showLocation.append(showLocationFill);
+			showWeather.append(showLocationFill);
 			// showLocation.append(mapDisplay);
 
 			// attempt at google map places library
@@ -152,7 +157,7 @@ $(document).ready(function(){
 		 		highTempF: Math.round((weatherData12Hr.main.temp_max * 9/5) - 459.67),
 		 		lowTempC: Math.round(weatherData12Hr.main.temp_min - 273.15),
 		 		lowTempF: Math.round((weatherData12Hr.main.temp_min * 9/5) - 459.67)
-	 		}
+	 		};
 
 	 		var weather24Hrs = {
 	 			weatherData: response.list[8],
@@ -169,7 +174,7 @@ $(document).ready(function(){
 		 		highTempF: Math.round((weatherData24Hr.main.temp_max * 9/5) - 459.67),
 		 		lowTempC: Math.round(weatherData24Hr.main.temp_min - 273.15),
 		 		lowTempF: Math.round((weatherData24Hr.main.temp_min * 9/5) - 459.67)
-	 		}
+	 		};
 
 	 		var weather36Hrs = {
 	 			weatherData: response.list[12],
@@ -186,7 +191,7 @@ $(document).ready(function(){
 		 		highTempF: Math.round((weatherData36Hr.main.temp_max * 9/5) - 459.67),
 		 		lowTempC: Math.round(weatherData36Hr.main.temp_min - 273.15),
 		 		lowTempF: Math.round((weatherData36Hr.main.temp_min * 9/5) - 459.67)
-	 		}
+	 		};
 
 	 		var weather48Hrs = {
 	 			weatherData: response.list[16],
@@ -203,16 +208,8 @@ $(document).ready(function(){
 		 		highTempF: Math.round((weatherData48Hr.main.temp_max * 9/5) - 459.67),
 		 		lowTempC: Math.round(weatherData48Hr.main.temp_min - 273.15),
 		 		lowTempF: Math.round((weatherData48Hr.main.temp_min * 9/5) - 459.67)
-	 		}
-
-	 		
-
-	 		console.log(weatherNow.weatherData);
-	 		console.log(weather12Hrs.weatherData);
-	 		console.log(weather24Hrs.weatherData);
-	 		console.log(weather36Hrs.weatherData);
-	 		console.log(weather48Hrs.weatherData);
-
+	 		};
+	 		//make a row for the weatherInfo
 	 		var weatherInfo = $('<div class="row">')
 	 		// console.log(tempF + "F , " + tempC + "C");
 
@@ -251,21 +248,67 @@ $(document).ready(function(){
 
 		var photoQueryURL ='https://api.flickr.com/services/rest/?&method=flickr.photos.search&lat=' + latitude + '&lon=' + longitude +'&tags=landscape&accuracy=11&extras=url_c&has_geo=1&per_page=5&format=json&nojsoncallback=1&api_key=883c01db966eed32014011db7cb741de';
 
-			$.ajax({url: photoQueryURL, method: 'GET'})
-				.done(function(response) {
-				var rand= Math.floor(Math.random() * (4 - 0)) + 0;
-				var photo = response.photos.photo[rand].url_c;
-				console.log('------Flickr Photos!');
-				// console.log(response);
-				console.log(photo);
-				if (photo){
-					$('.jumbotron').css({'background-image': 'url('+photo+')'});
-					$('.jumbotron').css({'height': '600px'});
-				};
-			}); 
-		
+		$.ajax({url: photoQueryURL, method: 'GET'})
+			.done(function(response) {
+			var rand= Math.floor(Math.random() * (4 - 0)) + 0;
+			var photo = response.photos.photo[rand].url_c;
+			console.log('------Flickr Photos!');
+			// console.log(response);
+			console.log(photo);
+			if (photo){
+				$('.jumbotron').css({'background-image': 'url('+photo+')'});
+				$('.jumbotron').css({'height': '500px'});
+			};
 		}); 
-	}
+
+			var news= 'https://webhose.io/search?token=a3503ff7-0311-4ddb-b864-722cd7632549&format=json&q='+query2+'&location='+query2+'&thread.title='+query2+'';
+			$.ajax({url: news, method: 'GET'})
+			.done(function(response) {
+				$(this).addClass('active');
+			var random=Math.floor(Math.random() * 10) + 1;
+				var info= response.posts[random];
+				var info1=response.posts[random+1];
+				var info2=response.posts[random+2];
+				var info3=response.posts[random+3];
+				var info4=response.posts[random+4];
+				var info5=response.posts[random+5];
+				console.log(query1);
+				console.log(query2);
+				console.log(info);
+				console.log(info1);
+				console.log(info1.thread.title);
+
+				if(info==info1){
+					info=info4;	
+				}
+				var link="www.getyourinfo.com";
+				var x=info.thread.title;
+				var y= link.link(info.thread.url);
+				var z=link.link(info1.thread.url);
+				var a=link.link(info2.thread.url);
+				var b=link.link(info3.thread.url);
+
+				$('#newsDisplay').empty();
+				//console.log(info.thread.url);
+				$('#newsDisplay').append('<p>1: ' +info.thread.title+ "</p>");
+				$('#newsDisplay').append('<p>2: ' +info1.thread.title+'</p>');
+				$('#newsDisplay').append('<p>3: ' +info2.thread.title+'</p>');
+				$('#newsDisplay').append('<p>4: ' +info3.thread.title+'</p>');
+					
+					// .append("<br/>"+ "3: "+info2.thread.title)
+					// .append("<br/>"+"Click here! "+ a)
+					// .append("<br/>"+ "4: "+info3.thread.title)
+					// .append("<br/>"+"Click here! "+ b);
+					
+					
+			//if it doesnt have the class active in delete the content inside of it. 	
+
+		}); 
+			
+		}); 
+
+		
+	};
 
 	//on click, search and make AJAX ca;;s.
 	$('#submit').on('click',function(){
