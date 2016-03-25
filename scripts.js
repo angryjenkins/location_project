@@ -60,7 +60,7 @@ $(document).ready(function(){
 			var request = {
 			    location: {lat: latitude, lng: longitude},
 			    radius: '5000',
-			    query: 'attractions',
+			    query: '[(attraction)]',
 			    rankBy: google.maps.places.RankBy.DISTANCE
 		  	};
 
