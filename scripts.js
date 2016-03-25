@@ -70,7 +70,7 @@ $(document).ready(function(){
 				placeDisplay.empty();
 
 		  		if (status == google.maps.places.PlacesServiceStatus.OK) {
-			    	for (var i = 0; i < 10; i++) {
+			    	for (var i = 0; i < results.length; i++) {
 				      	var place = results[i];
 				      	var types = place.types.join(' &#9900; ').replace(/_/g, ' ');
 
