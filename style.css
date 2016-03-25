@@ -8,7 +8,7 @@ html, body {
 	height:350px;
 	margin-bottom: 0;
 	background-image: url(images/mapBG01.jpg);
-	background-size: cover;
+	background-size: 100% auto;
 }
 
 .nav-tabs.nav-justified>li>a {

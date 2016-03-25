@@ -266,6 +266,7 @@ $(document).ready(function(){
 				console.log(response);
 				console.log(photo)
 				$('.jumbotron').css({'background-image': 'url('+photo+')'});
+				$('.jumbotron').css({'height': '600px'});
 			}); 
 		
 		}); 
