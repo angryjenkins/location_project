@@ -75,7 +75,7 @@ $(document).ready(function(){
 				      	var types = place.types.join(' &#9900; ').replace(/_/g, ' ');
 
 				      	if(place.photos){
-	      					var placePhoto = place.photos[0].getUrl({'maxWidth': 200, 'maxHeight': 200});
+	      					var placePhoto = place.photos[0].getUrl({'maxWidth': 320, 'maxHeight': 200});
 		      			} else {
 		      				var placePhoto = "images/no-image-available.png";
 		      			}
