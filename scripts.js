@@ -43,7 +43,7 @@ $(document).ready(function(){
 			// $('.panelTitle').append(location);
 
 			headLoc.append(location);
-			showLocation.append('<div class="row"><div class="col-md-12"><h2>' + location + ' <span class="text-smaller">('  + latitude.toFixed(2) + ' , ' + longitude.toFixed(2) + ')</span></h2></div></div>');
+			showLocation.append('<div class="row"><div class="col-md-12"><h2><i class="glyphicon glyphicon-globe"></i> ' + location + ' <span class="text-smaller" style="font-size:.8em;">('  + latitude.toFixed(2) + ' , ' + longitude.toFixed(2) + ')</span></h2></div></div>');
 			// showLocation.append(mapDisplay);
 
 			// attempt at google map places library
@@ -140,13 +140,13 @@ $(document).ready(function(){
 	 		console.log(tempF + "F , " + tempC + "C");
 
 			// showLocation.append('<h2>Current Temp: '+ tempF + ' &#8457; , ' + tempC + ' &#8451;</h2>');
-			showLocation.append('<p><span class="label label-info">' + condition + '</span>&nbsp;&nbsp;High: ' + highTempF + ' &#8457; , ' + highTempC + ' &#8451; - Low: '  + lowTempF + ' &#8457; , ' + lowTempC + ' &#8451;</p>');
-			showLocation.append('<p>Wind Speed: ' + windSpeed + 'km/h <span class="text-smaller">(' + windSpeedMPH + 'mph) - Direction: ' + windDir + '&deg;</p>');
+			showLocation.append('<p>'+ tempF + '&#8457; <span class="text-smaller">(' + tempC + '&#8451;)</span>&nbsp;&nbsp;<span class="label label-info">' + condition + '</span>&nbsp;&nbsp;<span class="label label-default">High: ' + highTempF + '&#8457; <span class="text-smaller">(' + highTempC + '&#8451;</span></span>&nbsp;&nbsp;<span class="label label-success">Low: '  + lowTempF + '&#8457; <span class="text-smaller">(' + lowTempC + '&#8451;)</span></span></p>');
+			showLocation.append('<p>Wind Speed: ' + windSpeedMPH.toFixed(2) + ' mph <span class="text-smaller">(' + windSpeed.toFixed(2) + ' km/h)</span> - Direction: ' + windDir + '&deg;</p>');
 			showLocation.append('<div class="clearfix">');
 
 		});
 
-		// var fiveDayForecastURL = 'http://api.openweathermap.org/data/2.5/forecast?lat=' + latitude + '&lon=' + longitude + '&cnt=1&APPID=b0b52307eaa0d845eca3022f719aae3d';
+		// var fiveDayForecastURL = 'http://api.openweathermap.org/data/2.5/forecast?lat=' + latitude + '&lon=' + longitude + '&cnt=5&APPID=b0b52307eaa0d845eca3022f719aae3d';
 
 		// 	$.ajax({url: fiveDayForecastURL, method: 'GET'})
 		// 	.done(function(response) {
