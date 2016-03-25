@@ -120,24 +120,6 @@ $(document).ready(function(){
 	 		var weatherData36Hr = response.list[12];
 	 		var weatherData48Hr = response.list[16];
 
-	 		// var tempK = weatherData.main.temp;
-	 		// var highTempK = weatherData.main.temp_max;
-	 		// var lowTempK = weatherData.main.temp_min;
-	 		// var condition = weatherData.weather[0].description;
-	 		// var windSpeed = weatherData.wind.speed;
-	 		// var windSpeedMPH = windSpeed * 0.62137;
-	 		// var windDir = weatherData.wind.deg;
-
-
-	 		// console.log(tempK);
-
-	 		// var tempC = Math.round(tempK - 273.15);
-	 		// var tempF = Math.round((tempK * 9/5) - 459.67);
-	 		// var highTempC = Math.round(highTempK - 273.15);
-	 		// var highTempF = Math.round((highTempK * 9/5) - 459.67);
-	 		// var lowTempC = Math.round(lowTempK - 273.15);
-	 		// var lowTempF = Math.round((lowTempK * 9/5) - 459.67);
-
 	 		var weatherNow = {
 	 			weatherData: response.list[0],
 		 		tempK: weatherDataNow.main.temp,
