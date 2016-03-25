@@ -1,9 +1,7 @@
 
-// sample geocoder API URL : https://maps.googleapis.com/maps/api/geocode/json?address=London&key=AIzaSyAzBECPmc6z_ppq-pud2BgfA6bmZOnC25s
 
-// sample google Places URL https://maps.googleapis.com/maps/api/place/textsearch/json?parameters
+//Clicking the search button triggers the geocoder function. The output of geoocder is used in all other ajax calls.
 
-//geocoder function with AJAX calls.
 $(document).ready(function(){
 
 	var geocoder = function (){
@@ -34,16 +32,23 @@ $(document).ready(function(){
 			console.log('Country: ' + country);
 
 			var showLocation = $('#infoDisplay');
+			var showLocationFill = $('<div class="row">');
 			var headLoc = $('#headerLoc');
-			// var mapDisplay = $('<div id="map">');
 
+			//this clears the DIVs of all contents.
 			showLocation.empty();
 			headLoc.empty();
-			// $('.panelTitle').empty();
-			// $('.panelTitle').append(location);
+			
 
 			headLoc.append(location);
-			showLocation.append('<div class="row"><div class="col-md-12"><h2><i class="glyphicon glyphicon-globe"></i> ' + location + ' <span class="text-smaller" style="font-size:.8em;">('  + latitude.toFixed(2) + ' , ' + longitude.toFixed(2) + ')</span></h2></div></div>');
+
+			//this is the placeholder for the google map!
+
+			showLocationFill.append('<div class="col-md-6" id="locationInfo"><h2><i class="glyphicon glyphicon-globe"></i> ' + location + ' <span class="text-smaller" style="font-size:.8em;">('  + latitude.toFixed(2) + ' , ' + longitude.toFixed(2) + ')</span></h2></div>');
+			showLocationFill.append('<div class="col-md-6" id="map">');
+			
+
+			showLocation.append(showLocationFill);
 			// showLocation.append(mapDisplay);
 
 			// attempt at google map places library
@@ -128,14 +133,17 @@ $(document).ready(function(){
 	 		var lowTempC = Math.round(lowTempK - 273.15);
 	 		var lowTempF = Math.round((lowTempK * 9/5) - 459.67);
 
-
+	 		var weatherInfo = $('<div class="row">')
 	 		console.log(tempF + "F , " + tempC + "C");
 
 			// Today's Weather
-			showLocation.append('<p>'+ tempF + '&#8457; <span class="text-smaller">(' + tempC + '&#8451;)</span>&nbsp;&nbsp;<span class="label label-info">' + condition + '</span>&nbsp;&nbsp;<span class="label label-default">High: ' + highTempF + '&#8457; <span class="text-smaller">(' + highTempC + '&#8451)</span></span>&nbsp;&nbsp;<span class="label label-success">Low: '  + lowTempF + '&#8457; <span class="text-smaller">(' + lowTempC + '&#8451;)</span></span></p>');
-			showLocation.append('<p>Wind Speed: ' + windSpeedMPH.toFixed(2) + ' mph <span class="text-smaller">(' + windSpeed.toFixed(2) + ' km/h)</span> - Direction: ' + windDir + '&deg;</p>');
-			showLocation.append('<div class="clearfix">');
 
+			weatherInfo.append('<div class="col-md-12"><p>'+ tempF + '&#8457; <span class="text-smaller">(' + tempC + '&#8451;)</span>&nbsp;&nbsp;<span class="label label-info">' + condition + '</span>&nbsp;&nbsp;<span class="label label-default">High: ' + highTempF + '&#8457; <span class="text-smaller">(' + highTempC + '&#8451)</span></span>&nbsp;&nbsp;<span class="label label-success">Low: '  + lowTempF + '&#8457; <span class="text-smaller">(' + lowTempC + '&#8451;)</span></span></p>');
+			weatherInfo.append('<p>Wind Speed: ' + windSpeedMPH.toFixed(2) + ' mph <span class="text-smaller">(' + windSpeed.toFixed(2) + ' km/h)</span></p>');
+			weatherInfo.append('<p>Direction: ' + windDir + '&deg;</p></div>')
+			weatherInfo.append('<div class="clearfix">');
+
+			$('#locationInfo').append(weatherInfo);
 		});
 
 		// var fiveDayForecastURL = 'http://api.openweathermap.org/data/2.5/forecast?lat=' + latitude + '&lon=' + longitude + '&cnt=5&APPID=b0b52307eaa0d845eca3022f719aae3d';
