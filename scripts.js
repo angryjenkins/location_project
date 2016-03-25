@@ -72,7 +72,7 @@ $(document).ready(function(){
 		  		if (status == google.maps.places.PlacesServiceStatus.OK) {
 			    	for (var i = 0; i < 10; i++) {
 				      	var place = results[i];
-				      	var types = place.types.join(' , ').replace(/_/g, ' ');
+				      	var types = place.types.join(' &#9900; ').replace(/_/g, ' ');
 
 				      	if(place.photos){
 	      					var placePhoto = place.photos[0].getUrl({'maxWidth': 200, 'maxHeight': 200});
@@ -140,7 +140,7 @@ $(document).ready(function(){
 	 		console.log(tempF + "F , " + tempC + "C");
 
 			// showLocation.append('<h2>Current Temp: '+ tempF + ' &#8457; , ' + tempC + ' &#8451;</h2>');
-			showLocation.append('<p>'+ tempF + '&#8457; <span class="text-smaller">(' + tempC + '&#8451;)</span>&nbsp;&nbsp;<span class="label label-info">' + condition + '</span>&nbsp;&nbsp;<span class="label label-default">High: ' + highTempF + '&#8457; <span class="text-smaller">(' + highTempC + '&#8451;</span></span>&nbsp;&nbsp;<span class="label label-success">Low: '  + lowTempF + '&#8457; <span class="text-smaller">(' + lowTempC + '&#8451;)</span></span></p>');
+			showLocation.append('<p>'+ tempF + '&#8457; <span class="text-smaller">(' + tempC + '&#8451;)</span>&nbsp;&nbsp;<span class="label label-info">' + condition + '</span>&nbsp;&nbsp;<span class="label label-default">High: ' + highTempF + '&#8457; <span class="text-smaller">(' + highTempC + '&#8451)</span></span>&nbsp;&nbsp;<span class="label label-success">Low: '  + lowTempF + '&#8457; <span class="text-smaller">(' + lowTempC + '&#8451;)</span></span></p>');
 			showLocation.append('<p>Wind Speed: ' + windSpeedMPH.toFixed(2) + ' mph <span class="text-smaller">(' + windSpeed.toFixed(2) + ' km/h)</span> - Direction: ' + windDir + '&deg;</p>');
 			showLocation.append('<div class="clearfix">');
 
