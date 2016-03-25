@@ -130,7 +130,7 @@ $(document).ready(function(){
 
 	//on click, search and make AJAX ca;;s.
 	$('#submit').on('click',function(){
-
+		console.log("in submit click event")
 		geocoder();
 
 		$('#search').val('');
