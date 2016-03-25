@@ -26,7 +26,11 @@ $(document).ready(function(){
 	 		console.log(response);
 	 		var location = data.formatted_address;
 			console.log('Location Query: ' + location);
+			console.log(data.formatted_address);
 
+			console.log(data.address_components.long_name);
+			var query1=data.formatted_address
+			var query2=query.toLowerCase();
 			var place_id = data.place_id;
 			console.log('GooglePlace ID: ' + place_id);
 
@@ -87,7 +91,7 @@ $(document).ready(function(){
 			
 			
 			
-			var news= 'https://webhose.io/search?token=8aafca50-182e-46d2-9757-4836befd1363&format=json&q='+query+'&location='+query+'&thread.title='+query+'';
+			var news= 'https://webhose.io/search?token=a3503ff7-0311-4ddb-b864-722cd7632549&format=json&q='+query2+'&location='+query2+'&thread.title='+query2+'';
 			$.ajax({url: news, method: 'GET'})
 				.done(function(response) {
 					$(this).addClass('active');
@@ -98,6 +102,8 @@ $(document).ready(function(){
 					var info3=response.posts[random+3];
 					var info4=response.posts[random+4];
 					var info5=response.posts[random+5];
+					console.log(query1);
+					console.log(query2);
 					console.log(info);
 					console.log(info1);
 					console.log(info1.thread.title);
