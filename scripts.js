@@ -219,18 +219,22 @@ $(document).ready(function(){
 			// Today's Weather added to  layout.
 
 			weatherInfo.append('<div class="col-md-12"><p><b>Right Now:</b> '+ weatherNow.tempF + '&#8457; <span class="text-smaller">(' + weatherNow.tempC + '&#8451;)</span>&nbsp;&nbsp;<span class="label label-info">' + weatherNow.condition + '</span>&nbsp;&nbsp;<span class="label label-default">High: ' + weatherNow.highTempF + '&#8457; <span class="text-smaller">(' + weatherNow.highTempC + '&#8451)</span></span>&nbsp;&nbsp;<span class="label label-success">Low: '  + weatherNow.lowTempF + '&#8457; <span class="text-smaller">(' + weatherNow.lowTempC + '&#8451;)</span></span><br />Wind Speed: ' + weatherNow.windSpeedMPH.toFixed(2) + ' mph <span class="text-smaller">(' + weatherNow.windSpeed.toFixed(2) + ' km/h)</span></span>&nbsp;&nbsp;Direction: ' + weatherNow.windDir + '&deg;</p>');
+			weatherInfo.append('<hr>');
 
 			//Weather in 12 Hours
 
 			weatherInfo.append('<div class="col-md-12"><p><b>In 12 Hours:</b> '+ weather12Hrs.tempF + '&#8457; <span class="text-smaller">(' + weather12Hrs.tempC + '&#8451;)</span>&nbsp;&nbsp;<span class="label label-info">' + weather12Hrs.condition + '</span>&nbsp;&nbsp;<span class="label label-default">High: ' + weather12Hrs.highTempF + '&#8457; <span class="text-smaller">(' + weather12Hrs.highTempC + '&#8451)</span></span>&nbsp;&nbsp;<span class="label label-success">Low: '  + weather12Hrs.lowTempF + '&#8457; <span class="text-smaller">(' + weather12Hrs.lowTempC + '&#8451;)</span></span><br />Wind Speed: ' + weather12Hrs.windSpeedMPH.toFixed(2) + ' mph <span class="text-smaller">(' + weather12Hrs.windSpeed.toFixed(2) + ' km/h)</span></span>&nbsp;&nbsp;Direction: ' + weather12Hrs.windDir + '&deg;</p>');
+			weatherInfo.append('<hr>');
 
 			//Weather in 24 Hours
 
 			weatherInfo.append('<div class="col-md-12"><p><b>In 24 Hours:</b> '+ weather24Hrs.tempF + '&#8457; <span class="text-smaller">(' + weather24Hrs.tempC + '&#8451;)</span>&nbsp;&nbsp;<span class="label label-info">' + weather24Hrs.condition + '</span>&nbsp;&nbsp;<span class="label label-default">High: ' + weather24Hrs.highTempF + '&#8457; <span class="text-smaller">(' + weather24Hrs.highTempC + '&#8451)</span></span>&nbsp;&nbsp;<span class="label label-success">Low: '  + weather24Hrs.lowTempF + '&#8457; <span class="text-smaller">(' + weather24Hrs.lowTempC + '&#8451;)</span></span><br />Wind Speed: ' + weather24Hrs.windSpeedMPH.toFixed(2) + ' mph <span class="text-smaller">(' + weather24Hrs.windSpeed.toFixed(2) + ' km/h)</span></span>&nbsp;&nbsp;Direction: ' + weather24Hrs.windDir + '&deg;</p>');
+			weatherInfo.append('<hr>');
 
 			// Weather in 36 Hours
 
 			weatherInfo.append('<div class="col-md-12"><p><b>In 36 Hours:</b> '+ weather36Hrs.tempF + '&#8457; <span class="text-smaller">(' + weather36Hrs.tempC + '&#8451;)</span>&nbsp;&nbsp;<span class="label label-info">' + weather36Hrs.condition + '</span>&nbsp;&nbsp;<span class="label label-default">High: ' + weather36Hrs.highTempF + '&#8457; <span class="text-smaller">(' + weather36Hrs.highTempC + '&#8451)</span></span>&nbsp;&nbsp;<span class="label label-success">Low: '  + weather36Hrs.lowTempF + '&#8457; <span class="text-smaller">(' + weather36Hrs.lowTempC + '&#8451;)</span></span><br />Wind Speed: ' + weather36Hrs.windSpeedMPH.toFixed(2) + ' mph <span class="text-smaller">(' + weather36Hrs.windSpeed.toFixed(2) + ' km/h)</span></span>&nbsp;&nbsp;Direction: ' + weather36Hrs.windDir + '&deg;</p>');
+			weatherInfo.append('<hr>');
 
 			//Weather In 48 Hours
 
@@ -252,14 +256,16 @@ $(document).ready(function(){
 	 // 		console.log(response);
 		// });
 
-		var photoQueryURL ='https://api.flickr.com/services/rest/?&method=flickr.photos.search&lat=' + latitude + '&lon=' + longitude +'&has_geo=1&per_page=5&format=json&nojsoncallback=1&api_key=883c01db966eed32014011db7cb741de';
+		var photoQueryURL ='https://api.flickr.com/services/rest/?&method=flickr.photos.search&lat=' + latitude + '&lon=' + longitude +'&tags=landscape&accuracy=11&extras=url_z&has_geo=1&per_page=5&format=json&nojsoncallback=1&api_key=883c01db966eed32014011db7cb741de';
 
 			$.ajax({url: photoQueryURL, method: 'GET'})
 				.done(function(response) {
-				var dataPhoto = response.results;
-
+				var rand= Math.floor(Math.random() * (4- 0)) + 0;
+				var photo = response.photos.photo[rand].url_z;
 				console.log('------Flickr Photos!');
 				console.log(response);
+				console.log(photo)
+				$('.jumbotron').css({'background-image': 'url('+photo+')'});
 			}); 
 		
 		}); 
