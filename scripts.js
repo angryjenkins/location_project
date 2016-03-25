@@ -55,7 +55,7 @@ $(document).ready(function(){
 			//var map = new google.maps.Map(document.getElementById('map'), mapOptions);
 			$('#buzzbutton').on('click',function(){
 			var service = new google.maps.places.PlacesService(map);
-
+			initMap();
 			var request = {
 			    location: {lat: latitude, lng: longitude},
 			    radius: '5000',
@@ -67,7 +67,7 @@ $(document).ready(function(){
 				console.log("------Google Places Library!");
 				var placeDisplay = $('#buzzDisplay');
 				placeDisplay.empty();
-				initMap()
+				initMap();
 		  		if (status == google.maps.places.PlacesServiceStatus.OK) {
 			    	for (var i = 0; i < results.length; i++) {
 				      	var place = results[i];
@@ -297,6 +297,7 @@ var news= 'https://webhose.io/search?token=a3503ff7-0311-4ddb-b864-722cd7632549&
 	$('#submit').on('click',function(){
 
 		geocoder();
+		initMap();
 
 		$('#search').val('');
 
