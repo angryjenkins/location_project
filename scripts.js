@@ -218,27 +218,27 @@ $(document).ready(function(){
 
 			// Today's Weather added to  layout.
 
-			weatherInfo.append('<div class="col-md-12"><p><b>Right Now:</b> '+ weatherNow.tempF + '&#8457; <span class="text-smaller">(' + weatherNow.tempC + '&#8451;)</span>&nbsp;&nbsp;<span class="label label-info">' + weatherNow.condition + '</span>&nbsp;&nbsp;<span class="label label-default">High: ' + weatherNow.highTempF + '&#8457; <span class="text-smaller">(' + weatherNow.highTempC + '&#8451)</span></span>&nbsp;&nbsp;<span class="label label-success">Low: '  + weatherNow.lowTempF + '&#8457; <span class="text-smaller">(' + weatherNow.lowTempC + '&#8451;)</span></span><br />Wind Speed: ' + weatherNow.windSpeedMPH.toFixed(2) + ' mph <span class="text-smaller">(' + weatherNow.windSpeed.toFixed(2) + ' km/h)</span></span>&nbsp;&nbsp;Direction: ' + weatherNow.windDir + '&deg;</p>');
+			weatherInfo.append('<div class="col-md-12"><p><b>Right Now:</b> '+ weatherNow.tempF + '&#8457; <span class="text-smaller">(' + weatherNow.tempC + '&#8451;)</span>&nbsp;&nbsp;<span class="label label-info">' + weatherNow.condition + '</span>&nbsp;&nbsp;<span class="label label-default">High: ' + weatherNow.highTempF + '&#8457; <span class="text-smaller">(' + weatherNow.highTempC + '&#8451)</span></span>&nbsp;&nbsp;<span class="label label-success">Low: '  + weatherNow.lowTempF + '&#8457; <span class="text-smaller">(' + weatherNow.lowTempC + '&#8451;)</span></span><br />Wind Speed: ' + weatherNow.windSpeedMPH.toFixed(2) + ' mph <span class="text-smaller">(' + weatherNow.windSpeed.toFixed(2) + ' km/h)</span></span>&nbsp;&nbsp;Direction: ' + weatherNow.windDir.toFixed(0) + '&deg;</p>');
 			weatherInfo.append('<hr>');
 
 			//Weather in 12 Hours
 
-			weatherInfo.append('<div class="col-md-12"><p><b>In 12 Hours:</b> '+ weather12Hrs.tempF + '&#8457; <span class="text-smaller">(' + weather12Hrs.tempC + '&#8451;)</span>&nbsp;&nbsp;<span class="label label-info">' + weather12Hrs.condition + '</span>&nbsp;&nbsp;<span class="label label-default">High: ' + weather12Hrs.highTempF + '&#8457; <span class="text-smaller">(' + weather12Hrs.highTempC + '&#8451)</span></span>&nbsp;&nbsp;<span class="label label-success">Low: '  + weather12Hrs.lowTempF + '&#8457; <span class="text-smaller">(' + weather12Hrs.lowTempC + '&#8451;)</span></span><br />Wind Speed: ' + weather12Hrs.windSpeedMPH.toFixed(2) + ' mph <span class="text-smaller">(' + weather12Hrs.windSpeed.toFixed(2) + ' km/h)</span></span>&nbsp;&nbsp;Direction: ' + weather12Hrs.windDir + '&deg;</p>');
+			weatherInfo.append('<div class="col-md-12"><p><b>In 12 Hours:</b> '+ weather12Hrs.tempF + '&#8457; <span class="text-smaller">(' + weather12Hrs.tempC + '&#8451;)</span>&nbsp;&nbsp;<span class="label label-info">' + weather12Hrs.condition + '</span>&nbsp;&nbsp;<span class="label label-default">High: ' + weather12Hrs.highTempF + '&#8457; <span class="text-smaller">(' + weather12Hrs.highTempC + '&#8451)</span></span>&nbsp;&nbsp;<span class="label label-success">Low: '  + weather12Hrs.lowTempF + '&#8457; <span class="text-smaller">(' + weather12Hrs.lowTempC + '&#8451;)</span></span><br />Wind Speed: ' + weather12Hrs.windSpeedMPH.toFixed(2) + ' mph <span class="text-smaller">(' + weather12Hrs.windSpeed.toFixed(2) + ' km/h)</span></span>&nbsp;&nbsp;Direction: ' + weather12Hrs.windDir.toFixed(0) + '&deg;</p>');
 			weatherInfo.append('<hr>');
 
 			//Weather in 24 Hours
 
-			weatherInfo.append('<div class="col-md-12"><p><b>In 24 Hours:</b> '+ weather24Hrs.tempF + '&#8457; <span class="text-smaller">(' + weather24Hrs.tempC + '&#8451;)</span>&nbsp;&nbsp;<span class="label label-info">' + weather24Hrs.condition + '</span>&nbsp;&nbsp;<span class="label label-default">High: ' + weather24Hrs.highTempF + '&#8457; <span class="text-smaller">(' + weather24Hrs.highTempC + '&#8451)</span></span>&nbsp;&nbsp;<span class="label label-success">Low: '  + weather24Hrs.lowTempF + '&#8457; <span class="text-smaller">(' + weather24Hrs.lowTempC + '&#8451;)</span></span><br />Wind Speed: ' + weather24Hrs.windSpeedMPH.toFixed(2) + ' mph <span class="text-smaller">(' + weather24Hrs.windSpeed.toFixed(2) + ' km/h)</span></span>&nbsp;&nbsp;Direction: ' + weather24Hrs.windDir + '&deg;</p>');
+			weatherInfo.append('<div class="col-md-12"><p><b>In 24 Hours:</b> '+ weather24Hrs.tempF + '&#8457; <span class="text-smaller">(' + weather24Hrs.tempC + '&#8451;)</span>&nbsp;&nbsp;<span class="label label-info">' + weather24Hrs.condition + '</span>&nbsp;&nbsp;<span class="label label-default">High: ' + weather24Hrs.highTempF + '&#8457; <span class="text-smaller">(' + weather24Hrs.highTempC + '&#8451)</span></span>&nbsp;&nbsp;<span class="label label-success">Low: '  + weather24Hrs.lowTempF + '&#8457; <span class="text-smaller">(' + weather24Hrs.lowTempC + '&#8451;)</span></span><br />Wind Speed: ' + weather24Hrs.windSpeedMPH.toFixed(2) + ' mph <span class="text-smaller">(' + weather24Hrs.windSpeed.toFixed(2) + ' km/h)</span></span>&nbsp;&nbsp;Direction: ' + weather24Hrs.windDir.toFixed(0) + '&deg;</p>');
 			weatherInfo.append('<hr>');
 
 			// Weather in 36 Hours
 
-			weatherInfo.append('<div class="col-md-12"><p><b>In 36 Hours:</b> '+ weather36Hrs.tempF + '&#8457; <span class="text-smaller">(' + weather36Hrs.tempC + '&#8451;)</span>&nbsp;&nbsp;<span class="label label-info">' + weather36Hrs.condition + '</span>&nbsp;&nbsp;<span class="label label-default">High: ' + weather36Hrs.highTempF + '&#8457; <span class="text-smaller">(' + weather36Hrs.highTempC + '&#8451)</span></span>&nbsp;&nbsp;<span class="label label-success">Low: '  + weather36Hrs.lowTempF + '&#8457; <span class="text-smaller">(' + weather36Hrs.lowTempC + '&#8451;)</span></span><br />Wind Speed: ' + weather36Hrs.windSpeedMPH.toFixed(2) + ' mph <span class="text-smaller">(' + weather36Hrs.windSpeed.toFixed(2) + ' km/h)</span></span>&nbsp;&nbsp;Direction: ' + weather36Hrs.windDir + '&deg;</p>');
+			weatherInfo.append('<div class="col-md-12"><p><b>In 36 Hours:</b> '+ weather36Hrs.tempF + '&#8457; <span class="text-smaller">(' + weather36Hrs.tempC + '&#8451;)</span>&nbsp;&nbsp;<span class="label label-info">' + weather36Hrs.condition + '</span>&nbsp;&nbsp;<span class="label label-default">High: ' + weather36Hrs.highTempF + '&#8457; <span class="text-smaller">(' + weather36Hrs.highTempC + '&#8451)</span></span>&nbsp;&nbsp;<span class="label label-success">Low: '  + weather36Hrs.lowTempF + '&#8457; <span class="text-smaller">(' + weather36Hrs.lowTempC + '&#8451;)</span></span><br />Wind Speed: ' + weather36Hrs.windSpeedMPH.toFixed(2) + ' mph <span class="text-smaller">(' + weather36Hrs.windSpeed.toFixed(2) + ' km/h)</span></span>&nbsp;&nbsp;Direction: ' + weather36Hrs.windDir.toFixed(0) + '&deg;</p>');
 			weatherInfo.append('<hr>');
 
 			//Weather In 48 Hours
 
-			weatherInfo.append('<div class="col-md-12"><p><b>In 48 Hours:</b> '+ weather48Hrs.tempF + '&#8457; <span class="text-smaller">(' + weather48Hrs.tempC + '&#8451;)</span>&nbsp;&nbsp;<span class="label label-info">' + weather48Hrs.condition + '</span>&nbsp;&nbsp;<span class="label label-default">High: ' + weather48Hrs.highTempF + '&#8457; <span class="text-smaller">(' + weather48Hrs.highTempC + '&#8451)</span></span>&nbsp;&nbsp;<span class="label label-success">Low: '  + weather48Hrs.lowTempF + '&#8457; <span class="text-smaller">(' + weather48Hrs.lowTempC + '&#8451;)</span></span><br />Wind Speed: ' + weather48Hrs.windSpeedMPH.toFixed(2) + ' mph <span class="text-smaller">(' + weather48Hrs.windSpeed.toFixed(2) + ' km/h)</span></span>&nbsp;&nbsp;Direction: ' + weather48Hrs.windDir + '&deg;</p>');
+			weatherInfo.append('<div class="col-md-12"><p><b>In 48 Hours:</b> '+ weather48Hrs.tempF + '&#8457; <span class="text-smaller">(' + weather48Hrs.tempC + '&#8451;)</span>&nbsp;&nbsp;<span class="label label-info">' + weather48Hrs.condition + '</span>&nbsp;&nbsp;<span class="label label-default">High: ' + weather48Hrs.highTempF + '&#8457; <span class="text-smaller">(' + weather48Hrs.highTempC + '&#8451)</span></span>&nbsp;&nbsp;<span class="label label-success">Low: '  + weather48Hrs.lowTempF + '&#8457; <span class="text-smaller">(' + weather48Hrs.lowTempC + '&#8451;)</span></span><br />Wind Speed: ' + weather48Hrs.windSpeedMPH.toFixed(2) + ' mph <span class="text-smaller">(' + weather48Hrs.windSpeed.toFixed(2) + ' km/h)</span></span>&nbsp;&nbsp;Direction: ' + weather48Hrs.windDir.toFixed(0) + '&deg;</p>');
 
 
 
@@ -246,15 +246,8 @@ $(document).ready(function(){
 
 			$('#locationInfo').append(weatherInfo);
 		});
-
-		// var fiveDayForecastURL = 'http://api.openweathermap.org/data/2.5/forecast?lat=' + latitude + '&lon=' + longitude + '&cnt=5&APPID=b0b52307eaa0d845eca3022f719aae3d';
-
-		// 	$.ajax({url: fiveDayForecastURL, method: 'GET'})
-		// 	.done(function(response) {
-			
-	 // 		console.log("------Five Day Forecast!!");
-	 // 		console.log(response);
-		// });
+	
+		//this AJAX call makes a photo from the location into the backgorund of the jumbotron. It also increases the jumbotrom height to show more of the picture.
 
 		var photoQueryURL ='https://api.flickr.com/services/rest/?&method=flickr.photos.search&lat=' + latitude + '&lon=' + longitude +'&tags=landscape&accuracy=11&extras=url_c&has_geo=1&per_page=5&format=json&nojsoncallback=1&api_key=883c01db966eed32014011db7cb741de';
 
@@ -263,15 +256,16 @@ $(document).ready(function(){
 				var rand= Math.floor(Math.random() * (4 - 0)) + 0;
 				var photo = response.photos.photo[rand].url_c;
 				console.log('------Flickr Photos!');
-				console.log(response);
-				console.log(photo)
-				$('.jumbotron').css({'background-image': 'url('+photo+')'});
-				$('.jumbotron').css({'height': '600px'});
+				// console.log(response);
+				console.log(photo);
+				if (photo){
+					$('.jumbotron').css({'background-image': 'url('+photo+')'});
+					$('.jumbotron').css({'height': '600px'});
+				};
 			}); 
 		
 		}); 
 	}
-
 
 	//on click, search and make AJAX ca;;s.
 	$('#submit').on('click',function(){
