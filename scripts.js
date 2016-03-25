@@ -123,7 +123,7 @@ $(document).ready(function(){
 	 		var lowTempK = weatherData.main.temp_min;
 	 		var condition = weatherData.weather[0].description;
 	 		var windSpeed = weatherData.wind.speed;
-	 		var windSpeedMPH = windspeed * 0.62137;
+	 		var windSpeedMPH = windSpeed * 0.62137;
 	 		var windDir = weatherData.wind.deg;
 
 
