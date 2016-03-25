@@ -80,27 +80,19 @@ $(document).ready(function(){
 		      				var placePhoto = "images/no-image-available.png";
 		      			}
 
-			     	 	var googleCredit = $('<img src="images/powered-by-google-on-white.png" alt="powered by google">');
+		     	 		var googleCredit = $('<img src="images/powered-by-google-on-white.png" alt="powered by google">');
 
-					      // placeDisplay.append('<h2>' + place.name);
-					      // placeDisplay.append('<p class="text-info">' + place.formatted_address);
-					      // placeDisplay.append('<p class="text-muted">Category: ' + types);
-					      // placeDisplay.append('<p>Google Rating: ' + place.rating);
+			     		placeDisplay.append('<div class="media"><div class="media-left media-middle"><img class="media-object placePic" src="' + placePhoto + '" alt="' + location + '"></div><div class="media-body"><h4 class="media-heading">' + place.name + '</h4><p>Google Rating: ' + place.rating + '<br />' + place.formatted_address + '</p><p class="text-muted">' + types  + '</p></div></div>');
 
-
-				     	placeDisplay.append('<div class="media"><div class="media-left media-middle"><img class="media-object placePic" src="' + placePhoto + '" alt="' + location + '"></div><div class="media-body"><h4 class="media-heading">' + place.name + '</h4><p>Google Rating: ' + place.rating + '<br />' + place.formatted_address + '</p><p class="text-muted">' + types  + '</p></div></div>');
-
-					      //GOTTAFIX: pull the photo from the getUrl function - put all this in a media object?
-
-					      placeDisplay.append('<hr />');
+			      		placeDisplay.append('<hr />');
 					      //required Google credit
 					      
-					      console.log('#'+(i+1));
-					      console.log(place.name);
-					      console.log(place.formatted_address);
-					      console.log(place);
-					      console.log(placePhoto);
-				    	}
+				      	console.log('#'+(i+1));
+				      	console.log(place.name);
+				      	console.log(place.formatted_address);
+				      	console.log(place);
+				      	console.log(placePhoto);
+			    	}
 			    	placeDisplay.append(googleCredit);
 			  	}
 			}
@@ -139,7 +131,7 @@ $(document).ready(function(){
 
 	 		console.log(tempF + "F , " + tempC + "C");
 
-			// showLocation.append('<h2>Current Temp: '+ tempF + ' &#8457; , ' + tempC + ' &#8451;</h2>');
+			// Today's Weather
 			showLocation.append('<p>'+ tempF + '&#8457; <span class="text-smaller">(' + tempC + '&#8451;)</span>&nbsp;&nbsp;<span class="label label-info">' + condition + '</span>&nbsp;&nbsp;<span class="label label-default">High: ' + highTempF + '&#8457; <span class="text-smaller">(' + highTempC + '&#8451)</span></span>&nbsp;&nbsp;<span class="label label-success">Low: '  + lowTempF + '&#8457; <span class="text-smaller">(' + lowTempC + '&#8451;)</span></span></p>');
 			showLocation.append('<p>Wind Speed: ' + windSpeedMPH.toFixed(2) + ' mph <span class="text-smaller">(' + windSpeed.toFixed(2) + ' km/h)</span> - Direction: ' + windDir + '&deg;</p>');
 			showLocation.append('<div class="clearfix">');
