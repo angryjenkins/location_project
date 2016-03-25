@@ -256,12 +256,12 @@ $(document).ready(function(){
 	 // 		console.log(response);
 		// });
 
-		var photoQueryURL ='https://api.flickr.com/services/rest/?&method=flickr.photos.search&lat=' + latitude + '&lon=' + longitude +'&tags=landscape&accuracy=11&extras=url_z&has_geo=1&per_page=5&format=json&nojsoncallback=1&api_key=883c01db966eed32014011db7cb741de';
+		var photoQueryURL ='https://api.flickr.com/services/rest/?&method=flickr.photos.search&lat=' + latitude + '&lon=' + longitude +'&tags=landscape&accuracy=11&extras=url_c&has_geo=1&per_page=5&format=json&nojsoncallback=1&api_key=883c01db966eed32014011db7cb741de';
 
 			$.ajax({url: photoQueryURL, method: 'GET'})
 				.done(function(response) {
-				var rand= Math.floor(Math.random() * (4- 0)) + 0;
-				var photo = response.photos.photo[rand].url_z;
+				var rand= Math.floor(Math.random() * (4 - 0)) + 0;
+				var photo = response.photos.photo[rand].url_c;
 				console.log('------Flickr Photos!');
 				console.log(response);
 				console.log(photo)
