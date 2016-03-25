@@ -17,10 +17,7 @@
       }
       #map { height:400px;
        }
-/*#submit, #search,#searchh{
-      	position:relative;
-      	top:300px;
-      }*/
+
       #mapButton{
       	width:400px;
       	position:relative;
@@ -30,7 +27,7 @@
       	background-color: #fff;
       	color:red;
       }
-      .controls {
+     /* .controls {
         margin-top: 10px;
         border: 1px solid transparent;
         border-radius: 2px 0 0 2px;
@@ -41,12 +38,12 @@
         box-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);
         position:relative;
         top:400px;
-      }
+      }*/
 
-      #pac-input {
+/*     #pac-input {
         background-color: #fff;
         font-family: Roboto;
-        font-size: 15px;
+        font-size: 555px;
         font-weight: 300;
         margin-left: 12px;
         padding: 0 11px 0 13px;
@@ -75,16 +72,12 @@
       }
       #target {
         width: 345px;
-      }
+      }*/
       
     </style>
 </head>
 <body>
-<div style="margin-left: 5px; margin-right: 5px; z-index: 1000000; position: absolute; left: 0px; bottom: 0px;"><a target="_blank" href="https://maps.google.com/maps?ll=-34.397,33.046344&amp;z=2&amp;t=m&amp;hl=en-US&amp;gl=US&amp;mapclient=apiv3" title="Click to see this area on Google Maps" style="position: static; overflow: visible; float: none; display: inline;"><div style="width: 66px; height: 26px; cursor: pointer;"><button name="subject" id="mapButton" type="submit" value="HTML">Click to find out more!!</button draggable="false" ></div></a></div>
 
-
-
-    
 
 <div class="jumbotron ">
  
@@ -228,7 +221,7 @@
       // parameter when you first load the API. For example:
       // <script src="https://maps.googleapis.com/maps/api/js?key=YOUR_API_KEY&libraries=places">
 
-      function initAutocomplete() {
+      function LetsStartThisBadBoy() {
         var map = new google.maps.Map(document.getElementById('map'), {
           center: {lat: -33.8688, lng: 151.2195},
           zoom: 3,
@@ -238,12 +231,14 @@
         // Create the search box and link it to the UI element.
         var input = document.getElementById('search');
         var searchBox = new google.maps.places.SearchBox(search);
-        $('#searchh').prepend('<div id="' + searchBox + '"></div>');
+        
         //controls the map:::map.controls[google.maps.ControlPosition.TOP_LEFT].push(search);
 
         // Bias the SearchBox results towards current map's viewport.
         map.addListener('bounds_changed', function() {
           searchBox.setBounds(map.getBounds());
+          console.log(map.getBounds()) //changing the distance of the map
+
         });
 
         var markers = [];
@@ -251,7 +246,8 @@
         // more details for that place.
         searchBox.addListener('places_changed', function() {
           var places = searchBox.getPlaces();
-
+          console.log(map.getPlaces)
+         
           if (places.length == 0) {
             return;
           }
@@ -294,7 +290,7 @@
 
     
     </script>
-       <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyApdGBuNgoaNyQZNvXFacBu6Za3cpxxWGc&libraries=places&callback=initAutocomplete"
+       <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyApdGBuNgoaNyQZNvXFacBu6Za3cpxxWGc&libraries=places&callback=LetsStartThisBadBoy"
          async defer></script>
 <script src="scripts.js"></script>
 <script src="map.js"></script>

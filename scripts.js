@@ -96,11 +96,15 @@ $(document).ready(function(){
 					var info1=response.posts[random+1];
 					var info2=response.posts[random+2];
 					var info3=response.posts[random+3];
+					var info4=response.posts[random+4];
+					var info5=response.posts[random+5];
 					console.log(info);
 					console.log(info1);
 					console.log(info1.thread.title);
-
-					var link="www.coolinfoonthisspecificcountry.com";
+				if(info==info1){
+					info=info4;	
+				}
+					var link="www.getyourinfo.com";
 					var x=info.thread.title;
 					var y= link.link(info.thread.url);
 					var z=link.link(info1.thread.url);
