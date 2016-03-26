@@ -5,11 +5,12 @@
 	<title>Location Looker Upper</title>
 	<!-- Latest compiled and minified CSS & JS -->
 	<link rel="stylesheet" href="https://bootswatch.com/cosmo/bootstrap.min.css">
-	
 
 	<link rel="stylesheet" href="style.css">
+<script src="https://cdn.firebase.com/js/client/2.4.1/firebase.js"></script>
 
 	<script src="https://code.jquery.com/jquery.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-sidebar/3.3.2/jquery.sidebar.min.js"></script>
 	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
 
 	<!-- HTML MOD - add Map Places API Javascript - invalid key!-->
@@ -31,7 +32,6 @@
 					</button>
 					<a class="navbar-brand" href="#"><i class="glyphicon glyphicon-map-marker"></i>&nbsp;Location Looker Upper!</a>
 				</div>
-		
 				<!-- Collect the nav links, forms, and other content for toggling -->
 				<div class="collapse navbar-collapse navbar-ex1-collapse">
 					<ul class="nav navbar-nav">
@@ -57,13 +57,33 @@
 							<button type="submit" id="submit" class="btn btn-primary"><i class="glyphicon glyphicon-search"></i>&nbsp;Search</button>
 						</form>
 					</ul>
+					
 				</div><!-- /.navbar-collapse -->
 			</div>
 		</nav>
 		<h1 id="cityName"></h1>
 	</div>
 </div>
+<div class="sidebar left" >
+<h3 id="sideHead">Recently Searched<h3>
+
+<div class="buttonDiv">
+	
+
+</div>
+<button type="button" class="btn btn-primary btn-circle" id="sidebarButtonClose"><i class="glyphicon glyphicon-arrow-left"></i></button>
+
+</div>
+
+
+
+
+
+
+
 <div class="container-fluid">
+<button type="button" class="btn btn-primary btn-circle" id="sidebarButton"><i class="glyphicon glyphicon-arrow-right"></i></button>
+
 	<div class="row">
 		<div class="col-md-12">
 			<div>

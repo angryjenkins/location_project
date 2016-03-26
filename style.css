@@ -23,6 +23,41 @@ a {
 }
 @media screen and (min-width: 1000px) {
 	.jumbotron{
-		background-size: 1300px 400px;
+		background-size: 100% 400px;
 	}
+}
+#sidebarButton{
+		z-index: 1;
+		position: fixed;
+		float: left;
+		border-radius: 35px;
+		margin-right: 10px;
+		border:none;
+		opacity: .5;
+		outline-style: none;
+
+}
+.sidebar.left{
+	position: fixed;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    width: 270px;
+    background: #000000;
+    z-index: 2;
+    opacity: .9;
+   };
+
+.sidebar.left #sideHead{
+	color: #FFFFFF;
+	opacity: none;
+}
+#sidebarButtonClose{
+		border-radius: 35px;
+		margin-right: 10px;
+		border:none;
+		opacity: .5;
+		outline-style: none;
+		float: right;
+		margin-top: 150px;
 }

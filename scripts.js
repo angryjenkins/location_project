@@ -1,13 +1,22 @@
+var fireLink= new Firebase("https://travelproject.firebaseio.com/");
 
 // sample geocoder API URL : https://maps.googleapis.com/maps/api/geocode/json?address=London&key=AIzaSyAzBECPmc6z_ppq-pud2BgfA6bmZOnC25s
 
 // sample google Places URL https://maps.googleapis.com/maps/api/place/textsearch/json?parameters
 
 //geocoder function with AJAX calls.
-$(document).ready(function(){
+$(".sidebar.left").sidebar().trigger("sidebar:close");
 
-	var geocoder = function (){
-	var query = $('#search').val().trim();
+$(document).ready(function(){
+	$("#sidebarButton").on('click', function(){
+		$(".sidebar.left").sidebar().trigger("sidebar:open");
+});
+	$("#sidebarButtonClose").on('click', function(){
+		$(".sidebar.left").sidebar().trigger("sidebar:close");
+	});
+	var geocoder = function (query){
+	var query = query;
+
 	var geocodeQueryURL = 'https://maps.googleapis.com/maps/api/geocode/json?address=' + query + '&key=AIzaSyAzBECPmc6z_ppq-pud2BgfA6bmZOnC25s';
 	
 
@@ -34,7 +43,10 @@ $(document).ready(function(){
 			var country = data.address_components[data.address_components.length - 1].long_name.trim();
 			console.log('Country: ' + country);
 
-
+			var shortName= data.address_components[0].short_name;
+			console.log('Short name(for recent search buttons): '+shortName);
+			
+			
 
 			var showLocation = $('#infoDisplay');
 			var mapDisplay = $('<div class="row"><div class="col-md-12" id="map">');
@@ -167,17 +179,42 @@ $(document).ready(function(){
 		// 		console.log('Google Places - "Restaurants In" Query!');
 		// 		console.log(response);
 		// 	}); 
+
+
+
+
+
 		}); 
 	}
 
 
 	//on click, search and make AJAX ca;;s.
 	$('#submit').on('click',function(){
+		var query = $('#search').val().trim();
+		fireLink.push({destination: query});
 
-		geocoder();
-		$('.jumbotron').css({'background-image': 'url(images/default.jpg)'});
+		geocoder(query);
+		$('.jumbotron').css({'background-image': 'url(images/mapBG01.jpg)'});
 		$('#search').val('');
 
 		return false;
 	});
-});
+		fireLink.on("child_added", function(childSnapshot, prevChildKey){
+				var dest = childSnapshot.val().destination;
+
+				a = $('<button>')
+		    	a.addClass('destButtons');
+		    	a.attr('id', dest);
+		    	a.text(dest);
+		    	$('.buttonDiv').append(a);
+		    	console.log(a);
+		    	console.log(dest);
+		$('.destButtons').off().click(function(){
+			var queryOne=(this).id;
+			console.log("This is a new query" +queryOne);
+			geocoder(queryOne);
+			});
+			
+		});	
+			
+	});
