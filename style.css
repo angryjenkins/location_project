@@ -1,11 +1,43 @@
+html, body {
+	height: 100%;
+  	margin: 0;
+	font-sixe: 1em;
+}
+
+h2 {
+	font-size: 1.5em;
+}
+
 .jumbotron {
-	height:400px;
+	height:350px;
 	margin-bottom: 0;
 	background-image: url(images/mapBG01.jpg);
 	background-size: cover;
 }
 
+.nav-tabs.nav-justified>li>a {
+	font-size: 20px;map
+}
+
 a {
 	color: #666;
 	font-weight:500;
+}
+
+#map, #weatherDisplay, #newsDisplay, #buzzDisplay {
+	font-size: 24px;
+}
+
+#map{
+  height: 100%;
+  margin: 0;
+}
+
+.placePic {
+	width: 320px;
+	height: 200px;
+}
+
+.text-smaller {
+	font-size: .8em;
 }
