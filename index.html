@@ -9,28 +9,13 @@
 	
 
 	<link rel="stylesheet" href="style.css">
-
 	<script src="https://code.jquery.com/jquery.js"></script>
+	<!-- sidebar plugin -->
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-sidebar/3.3.2/jquery.sidebar.min.js"></script>
 	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
 	<script src="https://cdn.firebase.com/js/client/2.4.1/firebase.js"></script>
 	<!-- HTML MOD - add Map Places API Javascript - invalid key!-->
 	<script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBXu_yk8KUve9mHHk20jh3wAU7olb_maoo&libraries=places"></script>
-
-	<style>
-	 #map { height:400px;
-       }
-
-      #mapButton{
-      	width:400px;
-      	position:relative;
-      top:280px;
-      	left:10px;
-      	font-family: 'Roboto','sans-serif';
-      	background-color: #fff;
-      	color:red;
-      }
-
-	</style>
 </head>
 <body>
 <div class="jumbotron">
@@ -76,31 +61,44 @@
 				</div><!-- /.navbar-collapse -->
 			</div>
 		</nav>
-
+			<!-- <h1 id="cityName"></h1> -->
 	</div>
 </div>
+<!-- sidebar -->
+<div class="sidebar left" >
+<h3 id="sideHead">Recently Searched</h3>
+<!-- dynamically created buttons -->
+<div class="buttonDiv">
+	
 
+</div>
+<!-- sidebar close button -->
+<button type="button" class="btn btn-primary btn-circle" id="sidebarButtonClose"><i class="glyphicon glyphicon-arrow-left"></i></button>
+</div>
 
 <div class="container-fluid">
+
 	<div class="row">
-		<!-- <div id="map"></div> -->
+		<div id="map"></div>
 	</div>
 </div>
 
 <div class="container-fluid">
+<button type="button" class="btn btn-primary btn-circle" id="sidebarButton"><i class="glyphicon glyphicon-arrow-right"></i></button>
 	<div class="row">
 		<div class="col-md-12">
 			<div>
 			  	<ul class="nav nav-tabs nav-justified" role="tablist">
-				      <li role="presentation"  class="active"><a href="#info" aria-controls="home"id="infobutton" role="tab" data-toggle="tab">Map</a></li>
+				    <!-- <li role="presentation" class="active"><a href="#info" aria-controls="home" role="tab" data-toggle="tab">Info</a></li> -->
 				    <li role="presentation"><a href="#weather" aria-controls="weather" role="tab" data-toggle="tab">Weather</a></li>
 				    <li role="presentation"><a href="#news" aria-controls="news" role="tab" data-toggle="tab">News</a></li>
-				    <li role="presentation"><a href="#buzz" aria-controls="buzz"id="buzzbutton" role="tab" data-toggle="tab">Attractions</a></li>
+				    <li role="presentation"><a href="#buzz" aria-controls="buzz" role="tab" data-toggle="tab">Attractions</a></li>
 			  	</ul>
 			  	<!-- Tab panes -->
 			</div>
 			<div class="tab-content">
-		    	<div role="tabpanel" class="tab-pane fade in active" id="info">
+		    	<!-- <div role="tabpanel" class="tab-pane fade" id="info">
+
 					<div class="row">
 						<div class="col-md-12">
 							<div class="panel panel-default">
@@ -113,8 +111,8 @@
 							</div>
 						</div>
 					</div>
-		    	</div>
-			    <div role="tabpanel" class="tab-pane fade " id="weather">
+		    	</div> -->
+			    <div role="tabpanel" class="tab-pane fade in active" id="weather">
 			    	<div class="row">
 						<div class="col-md-12">
 							<div class="panel panel-default">
@@ -122,7 +120,7 @@
 									<h2 class="panelTitle">Weather</h2>
 								</div>
 								<div class="panel-body" id="weatherDisplay">
-									<p class="alert alert-warning">enter a location above!</p>
+									<p class="alert alert-info">enter a location above!</p>
 								</div>
 							</div>
 						</div>
@@ -136,7 +134,7 @@
 									<h2 class="panelTitle">News</h2>
 								</div>
 								<div class="panel-body" id="newsDisplay">
-									<p class="alert alert-warning">enter a location above!</p>
+									<p class="alert alert-info">enter a location above!</p>
 								</div>
 							</div>
 						</div>
@@ -150,7 +148,7 @@
 									<h2 class="panelTitle">Attractions</h2>
 								</div>
 								<div class="panel-body" id="buzzDisplay">
-									<p class="alert alert-warning">enter a location above!</p>
+									<p class="alert alert-info">enter a location above!</p>
 								</div>
 							</div>
 						</div>
@@ -160,85 +158,15 @@
 		</div>
 	</div>
 </div>
-<div class="container-fluid">
+<!-- <div class="container-fluid">
 	<div class="row">
 		<div class="col-md-12">
 			<ul class="list-inline" id="recentQueries"></ul>
-			<!-- <ul class="list-inline" id="yourQueries"></ul> -->
+			<ul class="list-inline" id="yourQueries"></ul>
 		</div>
 	</div>
-</div>
- <script>
-
-      function initMap() {
-        var map = new google.maps.Map(document.getElementById('map'), {
-          center: {lat: -33.8688, lng: 151.2195},
-          zoom: 3,
-          mapTypeId: google.maps.MapTypeId.ROADMAP
-        });
-
-        // Create the search box and link it to the UI element.
-        var input = document.getElementById('search');
-        var searchBox = new google.maps.places.SearchBox(search);
-        
-        //controls the map:::map.controls[google.maps.ControlPosition.TOP_LEFT].push(search);
-
-        // Bias the SearchBox results towards current map's viewport.
-        map.addListener('bounds_changed', function() {
-          searchBox.setBounds(map.getBounds());
-          console.log(map.getBounds()) //changing the distance of the map
-
-        });
-
-        var markers = [];
-        // Listen for the event fired when the user selects a prediction and retrieve
-        // more details for that place.
-        searchBox.addListener('places_changed', function() {
-          var places = searchBox.getPlaces();
-          console.log(map.getPlaces)
-         
-          if (places.length == 0) {
-            return;
-          }
-
-          // Clear out the old markers.
-          markers.forEach(function(marker) {
-            marker.setMap(null);
-          });
-          markers = [];
-
-          // For each place, get the icon, name and location.
-          var bounds = new google.maps.LatLngBounds();
-          places.forEach(function(place) {
-            var icon = {
-              url: place.icon,
-              size: new google.maps.Size(71, 71),
-              origin: new google.maps.Point(0, 0),
-              anchor: new google.maps.Point(17, 34),
-              scaledSize: new google.maps.Size(25, 25)
-            };
-
-            // Create a marker for each place.
-            markers.push(new google.maps.Marker({
-              map: map,
-              icon: icon,
-              title: place.name,
-              position: place.geometry.location
-            }));
-
-            if (place.geometry.viewport) {
-              // Only geocodes have viewport.
-              bounds.union(place.geometry.viewport);
-            } else {
-              bounds.extend(place.geometry.location);
-            }
-          });
-          map.fitBounds(bounds);
-        });
-      }
-      </script>
-        <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyApdGBuNgoaNyQZNvXFacBu6Za3cpxxWGc&libraries=places&callback=initMap" async defer></script>
-<script src="recentQueries.js"></script>
+</div> -->
+<!-- <script src="recentQueries.js"></script> -->
 
 <script src="scripts.js"></script>
 

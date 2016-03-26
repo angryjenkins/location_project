@@ -1,14 +1,25 @@
+//Firebase Link
+var fireLink= new Firebase("https://travelproject.firebaseio.com/");
 
-
+//sets sidebars state to close 
+$(".sidebar.left").sidebar().trigger("sidebar:close");
 //Clicking the search button triggers the geocoder function. The output of geoocder is used in all other ajax calls.
 
 $(document).ready(function(){
-
-	var geocoder = function (){
-	var query = $('#search').val().trim();
+//Sidebar open/close commands
+	$("#sidebarButton").on('click', function(){
+		$(".sidebar.left").sidebar().trigger("sidebar:open");
+});
+	$("#sidebarButtonClose").on('click', function(){
+		$(".sidebar.left").sidebar().trigger("sidebar:close");
+	});
+	//the geocoder api takes a query and finds that location's lat, long, formatted address, etc.
+	var geocoder = function (query){
+		var query=query
 	var geocodeQueryURL = 'https://maps.googleapis.com/maps/api/geocode/json?address=' + query + '&key=AIzaSyAzBECPmc6z_ppq-pud2BgfA6bmZOnC25s';
 
 		$.ajax({url: geocodeQueryURL, method: 'GET'})
+
 			.done(function(response) {
 			console.log("------GeoCoder!");
 
@@ -18,7 +29,9 @@ $(document).ready(function(){
 	 		console.log(response);
 	 		var location = data.formatted_address;
 			console.log('Location Query: ' + location);
-
+			//changes header to city name
+			$('#cityName').html(location);
+			
 			var place_id = data.place_id;
 			console.log('GooglePlace ID: ' + place_id);
 
@@ -33,7 +46,8 @@ $(document).ready(function(){
 
 			var country = data.address_components[data.address_components.length - 1].long_name.trim();
 			console.log('Country: ' + country);
-
+			
+			//Location and info display
 			var showLocation = $('#infoDisplay');
 			var showWeather = $('#weatherDisplay');
 			var showLocationFill = $('<div class="row">');
@@ -54,20 +68,17 @@ $(document).ready(function(){
 
 
 			showWeather.append(showLocationFill);
-			// showLocation.append(mapDisplay);
+			 // showLocation.append(mapDisplay);
 
 			// attempt at google map places library
-			$('#buzzbutton').on('click',function(){
-			
 			var mapOptions = {
 				center: new google.maps.LatLng(latitude, longitude),
 				zone: 12,
 				mapTypeId: google.maps.MapTypeId.ROADMAP
 			}
 
-
 			var map = new google.maps.Map(document.getElementById('map'), mapOptions);
-			initMap();
+
 			var service = new google.maps.places.PlacesService(map);
 
 			var request = {
@@ -78,9 +89,9 @@ $(document).ready(function(){
 		  	};
 
 			function callback(results, status) {
-				initMap();
 
 
+			//access to google places, returning bars, resturants, POI.
 				console.log("------Google Places Library!");
 				var placeDisplay = $('#buzzDisplay');
 				placeDisplay.empty();
@@ -114,7 +125,6 @@ $(document).ready(function(){
 			}
 
 			service.textSearch(request, callback);
-				});
 			// end of map stuff
 
 			// openWeather API Key = b0b52307eaa0d845eca3022f719aae3d
@@ -251,91 +261,116 @@ $(document).ready(function(){
 			$('#locationInfo').append(weatherInfo);
 		});
 	
-		//this AJAX call makes a photo from the location into the backgorund of the jumbotron. It also increases the jumbotrom height to show more of the picture.
+		//this AJAX call makes a Flickr photo from the location into the backgorund of the jumbotron. It also increases the jumbotrom height to show more of the picture.
 
 		var photoQueryURL ='https://api.flickr.com/services/rest/?&method=flickr.photos.search&lat=' + latitude + '&lon=' + longitude +'&tags=landscape&accuracy=11&extras=url_c&has_geo=1&per_page=5&format=json&nojsoncallback=1&api_key=883c01db966eed32014011db7cb741de';
 
 		$.ajax({url: photoQueryURL, method: 'GET'})
 			.done(function(response) {
+			//generates random photo from the top 4 geolocated photos 
 			var rand= Math.floor(Math.random() * (4 - 0)) + 0;
 			var photo = response.photos.photo[rand].url_c;
 			console.log('------Flickr Photos!');
 			// console.log(response);
 			console.log(photo);
-			if (photo){
-				$('.jumbotron').css({'background-image': 'url('+photo+')'});
-				$('.jumbotron').css({'height': '500px'});
-			} else {
-				$('.jumbotron').css({'background-image': 'url("images/mapBG01.jpg")'});
-				$('.jumbotron').css({'height': '350px'});
-			}
+			$('.jumbotron').css({'background-image': 'url('+photo+')'});
+
+			
 		}); 
+			//this api generate Location sensitive news 
+			var news= 'https://webhose.io/search?token=a3503ff7-0311-4ddb-b864-722cd7632549&format=json&q='+query2+'&location='+query2+'&thread.title='+query2+'';
+			$.ajax({url: news, method: 'GET'})
+			.done(function(response) {
+				$(this).addClass('active');
+			var random=Math.floor(Math.random() * 10) + 1;
+				var info= response.posts[random];
+				var info1=response.posts[random+1];
+				var info2=response.posts[random+2];
+				var info3=response.posts[random+3];
+				var info4=response.posts[random+4];
+				var info5=response.posts[random+5];
+				console.log(query1);
+				console.log(query2);
+				console.log(info);
+				console.log(info1);
+				console.log(info1.thread.title);
 
-		var news= 'https://webhose.io/search?token=a3503ff7-0311-4ddb-b864-722cd7632549&format=json&q='+query2+'&location='+query2+'&thread.title='+query2+'';
-		$.ajax({url: news, method: 'GET'})
-		.done(function(response) {
-			$(this).addClass('active');
-		var random=Math.floor(Math.random() * 10) + 1;
-			var info= response.posts[random+6];
-			var info1=response.posts[random+1];
-			var info2=response.posts[random+2];
-			var info3=response.posts[random+3];
-			var info4=response.posts[random+4];
-			var info5=response.posts[random+5];
-			console.log(query1);
-			console.log(query2);
-			console.log(info);
-			console.log(info1);
-			console.log(info1.thread.title);
+				var link="www.getyourinfo.com";
+				
+				var a=link.link(info1.url);
+				var b=link.link(info2.url);
+				var c=link.link(info3.url);
+				var d= link.link(info4.url);
 
-			if(info==info1){
-				info=info4;	
-			}
-			var link="www.getyourinfo.com";
-			var x=info.thread.vicetitle;
-			var y= link.link(info.thread.url);
-			var z=link.link(info1.thread.url);
-			var a=link.link(info2.thread.url);
-			var b=link.link(info3.thread.url);
-
-			$('#newsDisplay').empty();
-			//console.log(info.thread.url);
-			$('#newsDisplay').append('<p>1: ' +info.thread.title+ "</p>"+"<br>"+y);
-			$('#newsDisplay').append('<p>2: ' +info1.thread.title+'</p>'+"<br>"+z);
-			$('#newsDisplay').append('<p>3: ' +info2.thread.title+'</p>'+"<br>"+a);
-			$('#newsDisplay').append('<p>4: ' +info3.thread.title+'</p>'+"<br>"+b);
+				$('#newsDisplay').empty();
+				//console.log(info.thread.url);
+				$('#newsDisplay').append('<p>1: ' +info5.thread.title+ "</p>" +a);
+				$('#newsDisplay').append('<p>2: ' +info1.thread.title+'</p>'+b);
+				$('#newsDisplay').append('<p>3: ' +info2.thread.title+'</p>'+c);
+				$('#newsDisplay').append('<p>4: ' +info3.thread.title+'</p>'+d);
 					
+					// .append("<br/>"+ "3: "+info2.thread.title)
+					// .append("<br/>"+"Click here! "+ a)
+					// .append("<br/>"+ "4: "+info3.thread.title)
+					// .append("<br/>"+"Click here! "+ b);
+					
+					
+			//if it doesnt have the class active in delete the content inside of it. 	
 
 		}); 
+			
+		}); 
+
 		
-	}); 
-
-	
-};
+	};
 
 
 
-//on click, search and make AJAX ca;;s.
-$('#submit').on('click',function(){
-
-	geocoder();
-	pushData();
-
-	$('#search').val('');
-
-	return false;
-});
-
-$(window).keyup(function(e) { 
-	if(e.keyCode == 13){
-	    geocoder();
-	    pushData();
+	//on click, search and make AJAX ca;;s.
+	$('#submit').on('click',function(){
+		var query = $('#search').val().trim();
+		//pushes all searches to Firebase
+		fireLink.push({destination: query});
+		geocoder(query);
+		//default background photo (if not photo available)
+		$('.jumbotron').css({'background-image': 'url(images/mapBG01.jpg)'});
 
 		$('#search').val('');
 
 		return false;
-	  	}
 	});
-});
+
+	$(window).keyup(function(e) { 
+	  if(e.keyCode == 13){
+	  	var query = $('#search').val().trim();
+
+	    geocoder(query);
+	    $('.jumbotron').css({'background-image': 'url(images/mapBG01.jpg)'});
+			$('#search').val('');
+
+			return false;
+		};
+	  });
+	//everytime a var is added to firebase a button is created
+	fireLink.on("child_added", function(childSnapshot, prevChildKey){
+				var dest = childSnapshot.val().destination;
+				a = $('<button>')
+		    	a.addClass('destButtons');
+		    	a.attr('id', dest);
+		    	a.text(dest);
+		    	$('.buttonDiv').append(a);
+		    	console.log(a);
+		    	console.log(dest);
+		 //when sidebar button is clicked, geocoder runs 
+		$('.destButtons').off().click(function(){
+			var queryOne=(this).id;
+			console.log("This is a new query" +queryOne);
+			geocoder(queryOne);
+			});
+			
+		});	
+			
+	});
+
 
 
