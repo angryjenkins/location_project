@@ -76,15 +76,15 @@
 		<div class="col-md-12">
 			<div>
 			  	<ul class="nav nav-tabs nav-justified" role="tablist">
-				    <li role="presentation" class="active"><a href="#info" aria-controls="home" role="tab" data-toggle="tab">Info</a></li>
-				    <li role="presentation"><a href="#weather" aria-controls="weather" role="tab" data-toggle="tab">Weather</a></li>
+				    <!-- <li role="presentation"><a href="#info" aria-controls="info" role="tab" data-toggle="tab"></a>Map</li> -->
+				    <li role="presentation" class="active"><a href="#weather" aria-controls="weather" role="tab" data-toggle="tab">Weather</a></li>
 				    <li role="presentation"><a href="#news" aria-controls="news" role="tab" data-toggle="tab">News</a></li>
 				    <li role="presentation"><a href="#buzz" aria-controls="buzz" role="tab" data-toggle="tab">Attractions</a></li>
 			  	</ul>
 			  	<!-- Tab panes -->
 			</div>
 			<div class="tab-content">
-		    	<div role="tabpanel" class="tab-pane fade in active" id="info">
+		    	<div role="tabpanel" class="tab-pane fade " id="info">
 					<div class="row">
 						<div class="col-md-12">
 							<div class="panel panel-default">
@@ -98,7 +98,7 @@
 						</div>
 					</div>
 		    	</div>
-			    <div role="tabpanel" class="tab-pane fade" id="weather">
+			    <div role="tabpanel" class="tab-pane fade in active" id="weather">
 			    	<div class="row">
 						<div class="col-md-12">
 							<div class="panel panel-default">
@@ -106,7 +106,7 @@
 									<h2 class="panelTitle">Weather</h2>
 								</div>
 								<div class="panel-body" id="weatherDisplay">
-									<p class="alert alert-info">enter a location above!</p>
+									<p class="alert alert-warning">enter a location above!</p>
 								</div>
 							</div>
 						</div>
@@ -120,7 +120,7 @@
 									<h2 class="panelTitle">News</h2>
 								</div>
 								<div class="panel-body" id="newsDisplay">
-									<p class="alert alert-info">enter a location above!</p>
+									<p class="alert alert-warning">enter a location above!</p>
 								</div>
 							</div>
 						</div>
@@ -134,7 +134,7 @@
 									<h2 class="panelTitle">Attractions</h2>
 								</div>
 								<div class="panel-body" id="buzzDisplay">
-									<p class="alert alert-info">enter a location above!</p>
+									<p class="alert alert-warning">enter a location above!</p>
 								</div>
 							</div>
 						</div>

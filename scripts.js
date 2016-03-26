@@ -267,69 +267,70 @@ $(document).ready(function(){
 			}
 		}); 
 
-			var news= 'https://webhose.io/search?token=a3503ff7-0311-4ddb-b864-722cd7632549&format=json&q='+query2+'&location='+query2+'&thread.title='+query2+'';
-			$.ajax({url: news, method: 'GET'})
-			.done(function(response) {
-				$(this).addClass('active');
-			var random=Math.floor(Math.random() * 10) + 1;
-				var info= response.posts[random];
-				var info1=response.posts[random+1];
-				var info2=response.posts[random+2];
-				var info3=response.posts[random+3];
-				var info4=response.posts[random+4];
-				var info5=response.posts[random+5];
-				console.log(query1);
-				console.log(query2);
-				console.log(info);
-				console.log(info1);
-				console.log(info1.thread.title);
+		var news= 'https://webhose.io/search?token=a3503ff7-0311-4ddb-b864-722cd7632549&format=json&q='+query2+'&location='+query2+'&thread.title='+query2+'';
+		$.ajax({url: news, method: 'GET'})
+		.done(function(response) {
+			$(this).addClass('active');
+		var random=Math.floor(Math.random() * 10) + 1;
+			var info= response.posts[random];
+			var info1=response.posts[random+1];
+			var info2=response.posts[random+2];
+			var info3=response.posts[random+3];
+			var info4=response.posts[random+4];
+			var info5=response.posts[random+5];
+			console.log(query1);
+			console.log(query2);
+			console.log(info);
+			console.log(info1);
+			console.log(info1.thread.title);
 
-				if(info==info1){
-					info=info4;	
-				}
-				var link="www.getyourinfo.com";
-				var x=info.thread.title;
-				var y= link.link(info.thread.url);
-				var z=link.link(info1.thread.url);
-				var a=link.link(info2.thread.url);
-				var b=link.link(info3.thread.url);
+			if(info==info1){
+				info=info4;	
+			}
+			var link="www.getyourinfo.com";
+			var x=info.thread.title;
+			var y= link.link(info.thread.url);
+			var z=link.link(info1.thread.url);
+			var a=link.link(info2.thread.url);
+			var b=link.link(info3.thread.url);
 
-				$('#newsDisplay').empty();
-				//console.log(info.thread.url);
-				$('#newsDisplay').append('<p>1: ' +info.thread.title+ "</p>");
-				$('#newsDisplay').append('<p>2: ' +info1.thread.title+'</p>');
-				$('#newsDisplay').append('<p>3: ' +info2.thread.title+'</p>');
-				$('#newsDisplay').append('<p>4: ' +info3.thread.title+'</p>');
+			$('#newsDisplay').empty();
+			//console.log(info.thread.url);
+			$('#newsDisplay').append('<p>1: ' +info.thread.title+ "</p>");
+			$('#newsDisplay').append('<p>2: ' +info1.thread.title+'</p>');
+			$('#newsDisplay').append('<p>3: ' +info2.thread.title+'</p>');
+			$('#newsDisplay').append('<p>4: ' +info3.thread.title+'</p>');
 					
-			}); 
-			
+
 		}); 
-
 		
-	};
+	}); 
+
+	
+};
 
 
 
-	//on click, search and make AJAX ca;;s.
-	$('#submit').on('click',function(){
+//on click, search and make AJAX ca;;s.
+$('#submit').on('click',function(){
 
-		geocoder();
-		pushData();
+	geocoder();
+	pushData();
 
-		$('#search').val('');
+	$('#search').val('');
 
-		return false;
-	});
+	return false;
+});
 
-	$(window).keyup(function(e) { 
-	  if(e.keyCode == 13){
+$(window).keyup(function(e) { 
+	if(e.keyCode == 13){
 	    geocoder();
 	    pushData();
 
 		$('#search').val('');
 
 		return false;
-	  }
+	  	}
 	});
 });
 
