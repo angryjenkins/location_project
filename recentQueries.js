@@ -21,7 +21,7 @@ function pushData(){
 		  query: query
 		});
 
-		$("#yourQueries").append('<li><a href="#" class="btn btn-sm" data-query="' + localStorage.getItem("query") + '">' + localStorage.getItem("query") + '</a></li><li>&rarr;</li>');
+		$("#yourQueries").append('<li><a href="#" class="btn" data-query="' + localStorage.getItem("query") + '">' + localStorage.getItem("query") + '</a></li><li>&rarr;</li>');
 	}
 	
 	
@@ -38,7 +38,11 @@ recentQs.on("child_added", function(snap){
 	console.log("The read failed: " + errorObject.code);
 });
 
-
+$(".queriesli>a").click(function(){
+	var clickQuery = $(this).data('query');
+	console.log(clickQuery);
+	geocoder(clickQuery);
+});
 
 
 

@@ -22,7 +22,7 @@ $(document).ready(function(){
 			var place_id = data.place_id;
 			console.log('GooglePlace ID: ' + place_id);
 
-			var query1=data.formatted_address;
+			var query1=data.formatted_address
 			var query2=query.toLowerCase();
 
 			var latitude = data.geometry.location.lat;
