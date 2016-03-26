@@ -301,15 +301,7 @@ $(document).ready(function(){
 				$('#newsDisplay').append('<p>3: ' +info2.thread.title+'</p>');
 				$('#newsDisplay').append('<p>4: ' +info3.thread.title+'</p>');
 					
-					// .append("<br/>"+ "3: "+info2.thread.title)
-					// .append("<br/>"+"Click here! "+ a)
-					// .append("<br/>"+ "4: "+info3.thread.title)
-					// .append("<br/>"+"Click here! "+ b);
-					
-					
-			//if it doesnt have the class active in delete the content inside of it. 	
-
-		}); 
+			}); 
 			
 		}); 
 
@@ -334,9 +326,9 @@ $(document).ready(function(){
 	    geocoder();
 	    pushData();
 
-			$('#search').val('');
+		$('#search').val('');
 
-			return false;
+		return false;
 	  }
 	});
 });
