@@ -22,7 +22,7 @@ $(document).ready(function(){
 			var place_id = data.place_id;
 			console.log('GooglePlace ID: ' + place_id);
 
-			var query1=data.formatted_address
+			var query1=data.formatted_address;
 			var query2=query.toLowerCase();
 
 			var latitude = data.geometry.location.lat;
@@ -239,8 +239,6 @@ $(document).ready(function(){
 			//Weather In 48 Hours
 
 			weatherInfo.append('<div class="col-md-12"><p><b>In 48 Hours:</b> '+ weather48Hrs.tempF + '&#8457; <span class="text-smaller">(' + weather48Hrs.tempC + '&#8451;)</span>&nbsp;&nbsp;<span class="label label-info">' + weather48Hrs.condition + '</span>&nbsp;&nbsp;<span class="label label-default">High: ' + weather48Hrs.highTempF + '&#8457; <span class="text-smaller">(' + weather48Hrs.highTempC + '&#8451)</span></span>&nbsp;&nbsp;<span class="label label-success">Low: '  + weather48Hrs.lowTempF + '&#8457; <span class="text-smaller">(' + weather48Hrs.lowTempC + '&#8451;)</span></span><br />Wind Speed: ' + weather48Hrs.windSpeedMPH.toFixed(2) + ' mph <span class="text-smaller">(' + weather48Hrs.windSpeed.toFixed(2) + ' km/h)</span></span>&nbsp;&nbsp;Direction: ' + weather48Hrs.windDir.toFixed(0) + '&deg;</p>');
-
-
 
 			weatherInfo.append('<div class="clearfix">');
 
