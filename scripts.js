@@ -57,14 +57,17 @@ $(document).ready(function(){
 			// showLocation.append(mapDisplay);
 
 			// attempt at google map places library
+			$('#buzzbutton').on('click',function(){
+			
 			var mapOptions = {
 				center: new google.maps.LatLng(latitude, longitude),
 				zone: 12,
 				mapTypeId: google.maps.MapTypeId.ROADMAP
 			}
 
-			var map = new google.maps.Map(document.getElementById('map'), mapOptions);
 
+			var map = new google.maps.Map(document.getElementById('map'), mapOptions);
+			initMap();
 			var service = new google.maps.places.PlacesService(map);
 
 			var request = {
@@ -75,7 +78,7 @@ $(document).ready(function(){
 		  	};
 
 			function callback(results, status) {
-
+				initMap();
 
 
 				console.log("------Google Places Library!");
@@ -111,6 +114,7 @@ $(document).ready(function(){
 			}
 
 			service.textSearch(request, callback);
+				});
 			// end of map stuff
 
 			// openWeather API Key = b0b52307eaa0d845eca3022f719aae3d
@@ -272,7 +276,7 @@ $(document).ready(function(){
 		.done(function(response) {
 			$(this).addClass('active');
 		var random=Math.floor(Math.random() * 10) + 1;
-			var info= response.posts[random];
+			var info= response.posts[random+6];
 			var info1=response.posts[random+1];
 			var info2=response.posts[random+2];
 			var info3=response.posts[random+3];
@@ -288,7 +292,7 @@ $(document).ready(function(){
 				info=info4;	
 			}
 			var link="www.getyourinfo.com";
-			var x=info.thread.title;
+			var x=info.thread.vicetitle;
 			var y= link.link(info.thread.url);
 			var z=link.link(info1.thread.url);
 			var a=link.link(info2.thread.url);
@@ -296,10 +300,10 @@ $(document).ready(function(){
 
 			$('#newsDisplay').empty();
 			//console.log(info.thread.url);
-			$('#newsDisplay').append('<p>1: ' +info.thread.title+ "</p>");
-			$('#newsDisplay').append('<p>2: ' +info1.thread.title+'</p>');
-			$('#newsDisplay').append('<p>3: ' +info2.thread.title+'</p>');
-			$('#newsDisplay').append('<p>4: ' +info3.thread.title+'</p>');
+			$('#newsDisplay').append('<p>1: ' +info.thread.title+ "</p>"+"<br>"+y);
+			$('#newsDisplay').append('<p>2: ' +info1.thread.title+'</p>'+"<br>"+z);
+			$('#newsDisplay').append('<p>3: ' +info2.thread.title+'</p>'+"<br>"+a);
+			$('#newsDisplay').append('<p>4: ' +info3.thread.title+'</p>'+"<br>"+b);
 					
 
 		}); 
