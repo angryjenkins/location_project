@@ -328,15 +328,17 @@ $(document).ready(function(){
 
 		return false;
 	});
+
+	$(window).keyup(function(e) { 
+	  if(e.keyCode == 13){
+	    geocoder();
+	    pushData();
+
+			$('#search').val('');
+
+			return false;
+	  }
+	});
 });
 
-$(window).keyup(function(e) { 
-  if(e.keyCode == 13){
-    geocoder();
-    pushData();
 
-		$('#search').val('');
-
-		return false;
-  }
-});
