@@ -75,6 +75,9 @@ $(document).ready(function(){
 		  	};
 
 			function callback(results, status) {
+
+
+
 				console.log("------Google Places Library!");
 				var placeDisplay = $('#buzzDisplay');
 				placeDisplay.empty();
@@ -258,7 +261,10 @@ $(document).ready(function(){
 			if (photo){
 				$('.jumbotron').css({'background-image': 'url('+photo+')'});
 				$('.jumbotron').css({'height': '500px'});
-			};
+			} else {
+				$('.jumbotron').css({'background-image': 'url("images/mapBG01.jpg")'});
+				$('.jumbotron').css({'height': '350px'});
+			}
 		}); 
 
 			var news= 'https://webhose.io/search?token=a3503ff7-0311-4ddb-b864-722cd7632549&format=json&q='+query2+'&location='+query2+'&thread.title='+query2+'';
@@ -310,13 +316,27 @@ $(document).ready(function(){
 		
 	};
 
+
+
 	//on click, search and make AJAX ca;;s.
 	$('#submit').on('click',function(){
 
 		geocoder();
+		pushData();
 
 		$('#search').val('');
 
 		return false;
 	});
+});
+
+$(window).keyup(function(e) { 
+  if(e.keyCode == 13){
+    geocoder();
+    pushData();
+
+		$('#search').val('');
+
+		return false;
+  }
 });
