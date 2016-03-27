@@ -7,6 +7,9 @@ html, body {
 h2 {
 	font-size: 1.5em;
 }
+@-ms-viewport {
+  width: device-width;
+}
 
 .jumbotron {
 	height:350px;
@@ -24,7 +27,57 @@ h2 {
 		background-size: 100% 400px;
 	}
 }
+@media screen and (max-width: 620px) {
+	.media-body{
+		display: inline;
+		margin-left: -30px;
+	}
+	#weatherFormat{
+		font-size: 16px;
+		display: inline;
+		
+	}
+	#locationInfo{
+		margin-left:-20px;
+		display: inline;
+	}
+	#search{
+		margin-left: 10px;
+		width: 250px;
+		float: left;
 
+	}
+	#submit{
+		margin-top: -5px;	
+	}
+	.navbar-collapse.in {
+    overflow-y: visible;
+	}
+}
+@media screen and (max-width: 425px) {
+	#submit{
+		margin-top: 15px;
+		margin-left:10px;
+	}
+	#search{
+		width:200px;
+	}
+	#weatherFormat{
+		font-size: 12px;
+		display: inline;
+		
+	}
+	#locationInfo{
+		margin-left:-30px;
+		display: inline;
+	}
+	.media-object.placePic{
+		width:200px;
+	}
+}
+.navbar-collapse.in {
+    	overflow-y: visible;
+}
 .nav-tabs.nav-justified>li>a {
 	font-size: 20px;map
 }

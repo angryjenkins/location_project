@@ -227,7 +227,7 @@ $(document).ready(function(){
 		 		lowTempF: Math.round((weatherData48Hr.main.temp_min * 9/5) - 459.67)
 	 		};
 	 		//make a row for the weatherInfo
-	 		var weatherInfo = $('<div class="row">')
+	 		var weatherInfo = $('<div class="row" id="weatherFormat">')
 	 		// console.log(tempF + "F , " + tempC + "C");
 
 			// Today's Weather added to  layout.
@@ -343,6 +343,7 @@ $(document).ready(function(){
 	$(window).keyup(function(e) { 
 	  if(e.keyCode == 13){
 	  	var query = $('#search').val().trim();
+	    $('.jumbotron').css({'background-image': 'url(images/mapBG01.jpg)'});
 
 	    geocoder(query);
 	    $('.jumbotron').css({'background-image': 'url(images/mapBG01.jpg)'});
