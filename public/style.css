@@ -22,12 +22,13 @@ h2 {
 	background-color: #000000;
 	opacity: 0.7;
 }
+
 @media screen and (min-width: 1000px) {
 	.jumbotron{
 		background-size: 100% 400px;
 	}
 }
-@media screen and (max-width: 620px) {
+@media screen and (max-width: 1000px) {
 	.media-body{
 		display: inline;
 		margin-left: -30px;
@@ -43,7 +44,7 @@ h2 {
 	}
 	#search{
 		margin-left: 10px;
-		width: 250px;
+		width: 60%;
 		float: left;
 
 	}
@@ -54,13 +55,23 @@ h2 {
     overflow-y: visible;
 	}
 }
-@media screen and (max-width: 425px) {
-	#submit{
-		margin-top: 15px;
-		margin-left:10px;
-	}
+@media screen and (min-width: 768px) {
 	#search{
 		width:200px;
+		margin-right:-20px;
+	}
+	#submit{
+		margin-top: 1px;
+	}
+}
+
+@media screen and (max-width: 425px) {
+	#submit{
+		margin-bottom: 15px;
+		margin-right: -35px;
+	}
+	#search{
+		width: 50%;
 	}
 	#weatherFormat{
 		font-size: 12px;
@@ -75,6 +86,7 @@ h2 {
 		width:200px;
 	}
 }
+
 .navbar-collapse.in {
     	overflow-y: visible;
 }
