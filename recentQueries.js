@@ -31,21 +31,16 @@ function pushData(){
 
 $("#recentQueries").append('<h2 style="display:inline-block;">Recent Queries: </h2>');
 
-
-
 recentQs.on("child_added", function(snap){
 	var b = snap.val().query;
 
 	$("#recentQueries").append('<li><span class="queryButton btn btn-action btn-sm" data-query="' + b + '">' +b + '</span></li>');
-
-
-
 }, function (errorObject) {
 	console.log("The read failed: " + errorObject.code);
 });
 
-$(document).on('click','.queryButton',function(){
+$(document).on('click','.queryButton',function clickSearch(){
 	var clickQuery = $(this).data('query');
-	console.log(clickQuery);
+	console.log('The clickQuery: ' + clickQuery);
 	geocoder(clickQuery);
 });
