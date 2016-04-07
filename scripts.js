@@ -14,7 +14,7 @@ $(document).ready(function(){
 
 			var data = response.results[0];
 			// results[0] pulls the FIRST result from geocoder API.
-			
+
 	 		console.log(response);
 	 		var location = data.formatted_address;
 			console.log('Location Query: ' + location);
@@ -45,7 +45,7 @@ $(document).ready(function(){
 			showWeather.empty();
 			headLoc.empty();
 
-			
+
 
 			headLoc.append(location);
 			//this is the placeholder for the google map!
@@ -99,7 +99,7 @@ $(document).ready(function(){
 
 			      		placeDisplay.append('<hr />');
 					      //required Google credit
-					      
+
 				      	console.log('#'+(i+1));
 				      	console.log(place.name);
 				      	console.log(place.formatted_address);
@@ -118,7 +118,7 @@ $(document).ready(function(){
 
 			$.ajax({url: openWeatherURL, method: 'GET'})
 			.done(function(response) {
-			
+
 	 		console.log("------Open Weather!");
 	 		console.log(response);
 
@@ -244,7 +244,7 @@ $(document).ready(function(){
 
 			$('#locationInfo').append(weatherInfo);
 		});
-	
+
 		//this AJAX call makes a photo from the location into the backgorund of the jumbotron. It also increases the jumbotrom height to show more of the picture.
 
 		var photoQueryURL ='https://api.flickr.com/services/rest/?&method=flickr.photos.search&lat=' + latitude + '&lon=' + longitude +'&tags=landscape&accuracy=11&extras=url_c&has_geo=1&per_page=5&format=json&nojsoncallback=1&api_key=883c01db966eed32014011db7cb741de';
@@ -263,7 +263,7 @@ $(document).ready(function(){
 				$('.jumbotron').css({'background-image': 'url("images/mapBG01.jpg")'});
 				$('.jumbotron').css({'height': '350px'});
 			}
-		}); 
+		});
 
 		var news= 'https://webhose.io/search?token=a3503ff7-0311-4ddb-b864-722cd7632549&format=json&q='+query2+'&location='+query2+'&thread.title='+query2+'';
 		$.ajax({url: news, method: 'GET'})
@@ -283,7 +283,7 @@ $(document).ready(function(){
 			console.log(info1.thread.title);
 
 			if(info==info1){
-				info=info4;	
+				info=info4;
 			}
 			var link="www.getyourinfo.com";
 			var x=info.thread.title;
@@ -298,13 +298,13 @@ $(document).ready(function(){
 			$('#newsDisplay').append('<p>2: ' +info1.thread.title+'</p>');
 			$('#newsDisplay').append('<p>3: ' +info2.thread.title+'</p>');
 			$('#newsDisplay').append('<p>4: ' +info3.thread.title+'</p>');
-					
 
-		}); 
-		
-	}); 
 
-	
+		});
+
+	});
+
+
 };
 
 
@@ -320,7 +320,7 @@ $('#submit').on('click',function(){
 	return false;
 });
 
-$(window).keyup(function(e) { 
+$(window).keyup(function(e) {
 	if(e.keyCode == 13){
 	    geocoder();
 	    pushData();
@@ -331,5 +331,3 @@ $(window).keyup(function(e) {
 	  	}
 	});
 });
-
-
