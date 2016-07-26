@@ -295,7 +295,7 @@ $(document).ready(function(){
 				console.log(info1);
 				console.log(info1.thread.title);
 
-				var link="www.getyourinfo.com";
+				var link="More Info";
 				
 				var a=link.link(info1.url);
 				var b=link.link(info2.url);
