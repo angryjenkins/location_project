@@ -23,6 +23,19 @@ h2 {
 	opacity: 0.7;
 }
 
+.destButtons{
+	padding:7px;
+	margin:5px;
+	background-color:  #0066ff;
+	color: #ffffff;
+	font-weight: bold;
+	border-style: none;
+}
+
+#sideHead{
+	color: #ffffff;
+}
+
 @media screen and (min-width: 1000px) {
 	.jumbotron{
 		background-size: 100% 400px;
